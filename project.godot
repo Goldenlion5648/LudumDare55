@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="LudumDare55"
+run/main_scene="res://objects/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://objects/globals.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-tabs/plugin.cfg")
 
 [rendering]
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://14vhou66c4ng"]
+
+[ext_resource type="Script" path="res://objects/capturable.gd" id="1_jmfgo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xehbj"]
+size = Vector2(170, 116)
+
+[node name="capturable" type="Area2D"]
+script = ExtResource("1_jmfgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xehbj")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

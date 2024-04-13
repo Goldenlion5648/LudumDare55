@@ -1,0 +1,5 @@
+extends Node
+
+signal captured_object_signal
+signal captured_position_signal
+signal captured_walkable_signal

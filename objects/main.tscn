@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b36n5100v6a65"]
+
+[ext_resource type="Script" path="res://objects/shadow_controller.gd" id="1_fi87p"]
+[ext_resource type="Texture2D" uid="uid://dcuddep1q2ccp" path="res://icon.svg" id="2_h01qq"]
+[ext_resource type="PackedScene" uid="uid://14vhou66c4ng" path="res://objects/capturable.tscn" id="3_06plo"]
+
+[node name="main" type="Node2D"]
+
+[node name="shadow_controller" type="Node2D" parent="."]
+script = ExtResource("1_fi87p")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="playerSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.609375, 0.609375)
+texture = ExtResource("2_h01qq")
+
+[node name="test_captureable" type="Sprite2D" parent="."]
+position = Vector2(-405, -200)
+texture = ExtResource("2_h01qq")
+
+[node name="capturable" parent="test_captureable" instance=ExtResource("3_06plo")]
