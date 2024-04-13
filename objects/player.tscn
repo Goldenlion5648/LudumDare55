@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://jgfu8alemrxr"]
+[gd_scene load_steps=4 format=3 uid="uid://jgfu8alemrxr"]
 
 [ext_resource type="Texture2D" uid="uid://dcuddep1q2ccp" path="res://icon.svg" id="1_ap3mc"]
+[ext_resource type="PackedScene" uid="uid://14vhou66c4ng" path="res://objects/capturable.tscn" id="2_8rbjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3u484"]
 size = Vector2(135.714, 132.143)
@@ -14,3 +15,5 @@ texture = ExtResource("1_ap3mc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3u484")
+
+[node name="capturable" parent="." instance=ExtResource("2_8rbjk")]

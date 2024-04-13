@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.text = "[right]Shadow Power\n%d[/right]" % [shadow_controller.current_shadow_power]
+	self.text = "[right]Shadow Power\n%d[/right]" % [shadow_controller.calculate_remaining_shadow_power()]
