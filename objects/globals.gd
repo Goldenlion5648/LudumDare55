@@ -4,15 +4,29 @@ signal captured_object_signal
 signal captured_position_signal
 signal captured_walkable_signal
 
+signal selected_ability_changed
+signal icons_setup
+
+enum SelectableAbilities{
+	NormalShadow=0,
+	PlaceBalloon=1,
+	ThrowLight=2,
+}
+
+
 var current_level = 0
 var CURRENT_SHADOW_CONTROLLER: ShadowController
+
+var SHADOW_ICON: TextureButton
+var BALLOON_ICON: TextureButton
+var LIGHT_ICON: TextureButton
 
 func start_win_sequence():
 	#TODO: play sound
 	load_next_level()
 
 func count_levels():
-	return 1
+	return 3
 	#var dir = DirAccess.open("res://levels/")
 	#var file_name = dir.get_next()
 	#var ret = 0

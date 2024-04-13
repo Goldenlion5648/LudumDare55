@@ -1,20 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4m15mq6e5jsn"]
 
 [ext_resource type="Script" path="res://objects/captureable_character.gd" id="1_qfy3d"]
-[ext_resource type="Texture2D" uid="uid://dcuddep1q2ccp" path="res://icon.svg" id="1_rnot8"]
+[ext_resource type="Texture2D" uid="uid://c7qlju7jg8fc8" path="res://textures/ninja_evil.png" id="3_dq8dl"]
 [ext_resource type="PackedScene" uid="uid://14vhou66c4ng" path="res://objects/capturable.tscn" id="3_eagmu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggtta"]
 radius = 88.0
 
 [node name="captureableCharacter" type="CharacterBody2D"]
+scale = Vector2(0.84, 0.84)
 script = ExtResource("1_qfy3d")
 
 [node name="capturable" parent="." instance=ExtResource("3_eagmu")]
 scale = Vector2(0.625, 0.625)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_rnot8")
+texture = ExtResource("3_dq8dl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ggtta")

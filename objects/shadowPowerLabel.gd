@@ -1,6 +1,5 @@
 extends RichTextLabel
 
-@export var shadow_controller: ShadowController
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -8,4 +7,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.text = "[right]Shadow Power\n%d[/right]" % [shadow_controller.get_shadow_power_to_display()]
+	self.text = "[right]Shadow Power\n%d[/right]" % [Globals.CURRENT_SHADOW_CONTROLLER.get_shadow_power_to_display()]

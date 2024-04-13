@@ -7,7 +7,7 @@
 
 [node name="capturable" parent="." instance=ExtResource("1_a6vju")]
 scale = Vector2(0.265, 0.265)
-shadow_worth = 700
+shadow_worth = 400
 walkable = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

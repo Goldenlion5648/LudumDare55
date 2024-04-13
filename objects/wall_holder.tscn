@@ -5,19 +5,19 @@
 [node name="wall_holder" type="Node2D"]
 
 [node name="wall" parent="." instance=ExtResource("1_ttikn")]
-position = Vector2(105, -34)
-scale = Vector2(1.84, 0.239999)
-
-[node name="wall2" parent="." instance=ExtResource("1_ttikn")]
-position = Vector2(111, 139)
-scale = Vector2(1.84, 0.239999)
-
-[node name="wall3" parent="." instance=ExtResource("1_ttikn")]
-position = Vector2(270, 85)
-rotation = 1.57079
-scale = Vector2(1.84, 0.239999)
+position = Vector2(161, -23)
+scale = Vector2(3.8, 0.24)
 
 [node name="wall4" parent="." instance=ExtResource("1_ttikn")]
-position = Vector2(-108, 86)
+position = Vector2(161, 129)
+scale = Vector2(3.8, 0.24)
+
+[node name="wall3" parent="." instance=ExtResource("1_ttikn")]
+position = Vector2(537, 53)
 rotation = 1.57079
-scale = Vector2(1.84, 0.239999)
+scale = Vector2(1.01684, 0.200001)
+
+[node name="wall6" parent="." instance=ExtResource("1_ttikn")]
+position = Vector2(-198, 53)
+rotation = 1.57079
+scale = Vector2(1.01684, 0.200001)

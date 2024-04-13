@@ -9,10 +9,6 @@ var walk_speed = 4
 @export var balloons_allowed = 0
 @export var lights_allowed = 0
 
-@export var balloons_icon: TextureButton
-@export var lights_icon: TextureButton
-
-
 
 const balloon_default_instance = preload("res://objects/balloon.tscn")
 
@@ -21,22 +17,18 @@ var current_shadow_power = 0
 var should_draw_shadow = false
 var _debug = false
 
-enum SelectableAbilities{
-	NormalShadow=0,
-	PlaceBalloon=1,
-	ThrowLight=2,
-}
 
-var selected_ability = SelectableAbilities.NormalShadow
+var selected_ability = Globals.SelectableAbilities.NormalShadow
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.CURRENT_SHADOW_CONTROLLER = self
-	hide_unavailable_icons()
 	setup_captured_objects()
 	current_shadow_power = starting_shadow_power
 	#Globals.captured_position_signal.connect(add_captured_point)
 	Globals.captured_object_signal.connect(add_captured_object)
+	# await get_tree().create_timer(0.2).timeout
+	Globals.icons_setup.connect(hide_unavailable_icons)
 	#Globals.captured_walkable_signal.connect(add_captured_walkable)
 
 func get_total_shadow_worth_of_captured_points():
@@ -51,10 +43,10 @@ func get_allotted_shadow_power():
 	return starting_shadow_power + get_total_shadow_worth_of_captured_points()
 	
 func hide_unavailable_icons():
-	if balloons_allowed == 0:
-		balloons_icon.hide()
-	if lights_allowed == 0:
-		lights_icon.hide()
+	if balloons_allowed == 0 and Globals.BALLOON_ICON != null:
+		Globals.BALLOON_ICON.hide()
+	if lights_allowed == 0 and Globals.LIGHT_ICON != null:
+		Globals.LIGHT_ICON.hide()
 		
 
 #func add_captured_point(new_point):
@@ -75,7 +67,7 @@ func setup_captured_objects():
 	queue_redraw()
 
 func shadow_ability_active():
-	return selected_ability == SelectableAbilities.NormalShadow and should_draw_shadow
+	return selected_ability == Globals.SelectableAbilities.NormalShadow and should_draw_shadow
 	
 func allowed_to_capture():
 	return calculate_remaining_shadow_power() > 0
@@ -87,11 +79,11 @@ func place_balloon():
 
 func activate_selected_ability():
 	match selected_ability:
-		SelectableAbilities.NormalShadow:
+		Globals.SelectableAbilities.NormalShadow:
 			should_draw_shadow = not should_draw_shadow
-		SelectableAbilities.PlaceBalloon:
+		Globals.SelectableAbilities.PlaceBalloon:
 			place_balloon()
-		SelectableAbilities.ThrowLight:
+		Globals.SelectableAbilities.ThrowLight:
 			pass
 			
 
@@ -104,11 +96,14 @@ func _process(delta: float) -> void:
 		setup_captured_objects()
 		
 	if Input.is_action_just_pressed("select_shadow"):
-		selected_ability = SelectableAbilities.NormalShadow
+		selected_ability = Globals.SelectableAbilities.NormalShadow
+		Globals.selected_ability_changed.emit(Globals.SHADOW_ICON)
 	if Input.is_action_just_pressed("select_balloon") and balloons_allowed > 0:
-		selected_ability = SelectableAbilities.PlaceBalloon
+		selected_ability = Globals.SelectableAbilities.PlaceBalloon
+		Globals.selected_ability_changed.emit(Globals.BALLOON_ICON)
 	if Input.is_action_just_pressed("select_light") and lights_allowed > 0:
-		selected_ability = SelectableAbilities.ThrowLight
+		selected_ability = Globals.SelectableAbilities.ThrowLight
+		Globals.selected_ability_changed.emit(Globals.LIGHT_ICON)
 	
 	if Input.is_action_just_pressed("activate_selected_ability"):
 		activate_selected_ability()
@@ -117,7 +112,7 @@ func calculate_remaining_shadow_power():
 	return get_allotted_shadow_power() - get_total_shadow_length(get_shadow_positions())
 
 func get_shadow_power_to_display():
-	return ceili(calculate_remaining_shadow_power() / 10.0)
+	return max(0, ceili(calculate_remaining_shadow_power() / 10.0))
 
 	
 
