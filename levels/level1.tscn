@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://q0dbyyuwvl81"]
+
+[ext_resource type="Script" path="res://objects/shadowPowerLabel.gd" id="1_7fxcj"]
+[ext_resource type="PackedScene" uid="uid://c47saxuqrc270" path="res://objects/win_button.tscn" id="2_6bkph"]
+[ext_resource type="Script" path="res://objects/shadow_controller.gd" id="3_c44ad"]
+[ext_resource type="PackedScene" uid="uid://jgfu8alemrxr" path="res://objects/player.tscn" id="4_d5hun"]
+[ext_resource type="Script" path="res://objects/player.gd" id="5_l7s51"]
+[ext_resource type="PackedScene" uid="uid://d4m15mq6e5jsn" path="res://objects/captureable_character.tscn" id="6_hpoiu"]
+[ext_resource type="PackedScene" uid="uid://ct20hjxw8kjjl" path="res://objects/wall_holder.tscn" id="7_nbhuk"]
+
+[node name="level1" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="shadowPowerLabel" type="RichTextLabel" parent="Control" node_paths=PackedStringArray("shadow_controller")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 250.0
+grow_horizontal = 0
+theme_override_constants/text_highlight_h_padding = 30
+theme_override_constants/text_highlight_v_padding = 0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]Shadow power[/right]"
+fit_content = true
+script = ExtResource("1_7fxcj")
+shadow_controller = NodePath("../../shadow_controller")
+
+[node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_6bkph")]
+position = Vector2(200, -205)
+node_to_remove = NodePath("../wall_holder")
+
+[node name="shadow_controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("3_c44ad")
+player = NodePath("../player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("4_d5hun")]
+position = Vector2(0, 57)
+platform_wall_layers = 1
+script = ExtResource("5_l7s51")
+
+[node name="captureableCharacter" parent="." instance=ExtResource("6_hpoiu")]
+position = Vector2(-17, -198)
+
+[node name="wall_holder" parent="." instance=ExtResource("7_nbhuk")]

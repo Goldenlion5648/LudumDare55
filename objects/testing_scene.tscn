@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://8ycs38j85goi"]
+
+[ext_resource type="Script" path="res://temp_character_script.gd" id="1_rwt8s"]
+[ext_resource type="Texture2D" uid="uid://dcuddep1q2ccp" path="res://icon.svg" id="2_rqq3t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eks74"]
+radius = 70.0071
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8wnh"]
+size = Vector2(114, 561)
+
+[node name="testing_scene" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(208, 186)
+script = ExtResource("1_rwt8s")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_rqq3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_eks74")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(47, 270.5)
+shape = SubResource("RectangleShape2D_u8wnh")
