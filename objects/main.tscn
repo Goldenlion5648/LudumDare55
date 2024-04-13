@@ -1,12 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://b36n5100v6a65"]
+[gd_scene load_steps=5 format=3 uid="uid://b36n5100v6a65"]
 
 [ext_resource type="Script" path="res://objects/shadow_controller.gd" id="1_fi87p"]
 [ext_resource type="Texture2D" uid="uid://dcuddep1q2ccp" path="res://icon.svg" id="2_h01qq"]
 [ext_resource type="PackedScene" uid="uid://14vhou66c4ng" path="res://objects/capturable.tscn" id="3_06plo"]
+[ext_resource type="Script" path="res://objects/shadowPowerLabel.gd" id="4_ibnnb"]
 
 [node name="main" type="Node2D"]
 
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="shadowPowerLabel" type="RichTextLabel" parent="Control" node_paths=PackedStringArray("shadow_controller")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 250.0
+grow_horizontal = 0
+theme_override_constants/text_highlight_h_padding = 30
+theme_override_constants/text_highlight_v_padding = 0
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[right]Shadow power[/right]"
+fit_content = true
+script = ExtResource("4_ibnnb")
+shadow_controller = NodePath("../../shadow_controller")
+
 [node name="shadow_controller" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_fi87p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
