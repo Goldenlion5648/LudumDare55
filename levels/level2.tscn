@@ -15,7 +15,7 @@ unique_name_in_owner = true
 script = ExtResource("1_2s12g")
 player = NodePath("../player")
 starting_shadow_power = 200
-balloons_allowed = 3
+balloons_allowed = 2
 
 [node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_774sp")]
 position = Vector2(414, -208)
@@ -25,7 +25,7 @@ node_to_remove = NodePath("../wall_holder")
 
 [node name="player" parent="." instance=ExtResource("3_ij3bd")]
 unique_name_in_owner = true
-position = Vector2(0, 57)
+position = Vector2(-514, 246)
 platform_wall_layers = 1
 script = ExtResource("4_11o4a")
 
@@ -33,6 +33,7 @@ script = ExtResource("4_11o4a")
 position = Vector2(-17, -198)
 
 [node name="wall_holder" parent="." instance=ExtResource("6_lh6l7")]
-position = Vector2(-222, 11)
+position = Vector2(-517, 196)
+scale = Vector2(0.520001, 1)
 
 [node name="ui_holder" parent="." instance=ExtResource("7_y7sc3")]

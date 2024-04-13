@@ -17,6 +17,8 @@ enum SelectableAbilities{
 var current_level = 0
 var CURRENT_SHADOW_CONTROLLER: ShadowController
 
+var selected_ability: SelectableAbilities
+
 var SHADOW_ICON: TextureButton
 var BALLOON_ICON: TextureButton
 var LIGHT_ICON: TextureButton

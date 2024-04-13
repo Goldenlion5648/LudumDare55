@@ -27,3 +27,17 @@ func _ready() -> void:
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 	#pass
+
+
+func _on_shadow_icon_pressed() -> void:
+	Globals.selected_ability = Globals.SelectableAbilities.NormalShadow
+	Globals.selected_ability_changed.emit(Globals.SHADOW_ICON)
+	
+
+func _on_balloon_icon_pressed() -> void:
+	Globals.selected_ability = Globals.SelectableAbilities.PlaceBalloon
+	Globals.selected_ability_changed.emit(Globals.BALLOON_ICON)
+
+func _on_light_icon_pressed() -> void:
+	Globals.selected_ability = Globals.SelectableAbilities.ThrowLight
+	Globals.selected_ability_changed.emit(Globals.LIGHT_ICON)

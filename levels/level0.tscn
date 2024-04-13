@@ -17,20 +17,21 @@ player = NodePath("../player")
 starting_shadow_power = 200
 
 [node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_kd3ld")]
-position = Vector2(414, -208)
+position = Vector2(58, -208)
 node_to_remove = NodePath("../wall_holder")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="player" parent="." instance=ExtResource("4_fiee0")]
 unique_name_in_owner = true
-position = Vector2(0, 57)
+position = Vector2(-360, 57)
 platform_wall_layers = 1
 script = ExtResource("5_siak4")
 
 [node name="captureableCharacter" parent="." instance=ExtResource("6_tfmjb")]
-position = Vector2(-17, -198)
+position = Vector2(-360, -198)
 
 [node name="wall_holder" parent="." instance=ExtResource("7_p3mkn")]
+position = Vector2(-356, 1.52588e-05)
 
 [node name="ui_holder" parent="." instance=ExtResource("7_33br0")]

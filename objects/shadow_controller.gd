@@ -9,16 +9,16 @@ var walk_speed = 4
 @export var balloons_allowed = 0
 @export var lights_allowed = 0
 
+var balloons_used = 0
+var lights_used = 0
+
 
 const balloon_default_instance = preload("res://objects/balloon.tscn")
 
 var current_shadow_power = 0
 
-var should_draw_shadow = false
+var has_active_shadow = false
 var _debug = false
-
-
-var selected_ability = Globals.SelectableAbilities.NormalShadow
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,6 +29,8 @@ func _ready() -> void:
 	Globals.captured_object_signal.connect(add_captured_object)
 	# await get_tree().create_timer(0.2).timeout
 	Globals.icons_setup.connect(hide_unavailable_icons)
+
+	
 	#Globals.captured_walkable_signal.connect(add_captured_walkable)
 
 func get_total_shadow_worth_of_captured_points():
@@ -47,7 +49,7 @@ func hide_unavailable_icons():
 		Globals.BALLOON_ICON.hide()
 	if lights_allowed == 0 and Globals.LIGHT_ICON != null:
 		Globals.LIGHT_ICON.hide()
-		
+	Globals.selected_ability_changed.emit(Globals.SHADOW_ICON)
 
 #func add_captured_point(new_point):
 	#points_to_go_through.append(new_point)
@@ -66,21 +68,24 @@ func setup_captured_objects():
 	player.get_node("capturable").is_captured = true
 	queue_redraw()
 
-func shadow_ability_active():
-	return selected_ability == Globals.SelectableAbilities.NormalShadow and should_draw_shadow
+func should_show_shadow_to_mouse():
+	return Globals.selected_ability == Globals.SelectableAbilities.NormalShadow and has_active_shadow
 	
 func allowed_to_capture():
-	return calculate_remaining_shadow_power() > 0
+	return calculate_remaining_shadow_power() >= 0
 
 func place_balloon():
+	if balloons_used >= balloons_allowed:
+		return
+	balloons_used += 1
 	var new_instance = balloon_default_instance.instantiate()
 	new_instance.global_position = get_global_mouse_position()
 	add_child(new_instance)
 
 func activate_selected_ability():
-	match selected_ability:
+	match Globals.selected_ability:
 		Globals.SelectableAbilities.NormalShadow:
-			should_draw_shadow = not should_draw_shadow
+			has_active_shadow = not has_active_shadow
 		Globals.SelectableAbilities.PlaceBalloon:
 			place_balloon()
 		Globals.SelectableAbilities.ThrowLight:
@@ -96,13 +101,14 @@ func _process(delta: float) -> void:
 		setup_captured_objects()
 		
 	if Input.is_action_just_pressed("select_shadow"):
-		selected_ability = Globals.SelectableAbilities.NormalShadow
+		Globals.selected_ability = Globals.SelectableAbilities.NormalShadow
 		Globals.selected_ability_changed.emit(Globals.SHADOW_ICON)
 	if Input.is_action_just_pressed("select_balloon") and balloons_allowed > 0:
-		selected_ability = Globals.SelectableAbilities.PlaceBalloon
+		
+		Globals.selected_ability = Globals.SelectableAbilities.PlaceBalloon
 		Globals.selected_ability_changed.emit(Globals.BALLOON_ICON)
 	if Input.is_action_just_pressed("select_light") and lights_allowed > 0:
-		selected_ability = Globals.SelectableAbilities.ThrowLight
+		Globals.selected_ability = Globals.SelectableAbilities.ThrowLight
 		Globals.selected_ability_changed.emit(Globals.LIGHT_ICON)
 	
 	if Input.is_action_just_pressed("activate_selected_ability"):
@@ -143,13 +149,12 @@ func get_objects_as_points():
 
 func get_shadow_positions():
 	var ret = get_objects_as_points()
-	if not should_draw_shadow:
+	if not should_show_shadow_to_mouse():
 		return ret
-	var mouse_to_last_point : Vector2 = get_global_mouse_position() - (ret[-1])
-	var distance_vector: Vector2 = get_global_mouse_position() - (ret[-1])
+	var distance_vector: Vector2 = get_global_mouse_position() - ret[-1]
 	var total_len = get_total_shadow_length(ret)
 	#prints("total_len", total_len)
-	var remaining = get_allotted_shadow_power() - total_len
+	var remaining = max(0, get_allotted_shadow_power() - total_len)
 	#prints("remaining", remaining)
 	distance_vector = distance_vector.limit_length((remaining))
 	ret.append(ret[-1] + distance_vector)

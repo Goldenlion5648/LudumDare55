@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5bigmtu6b6tp"]
 
 [ext_resource type="PackedScene" uid="uid://14vhou66c4ng" path="res://objects/capturable.tscn" id="1_a6vju"]
-[ext_resource type="Texture2D" uid="uid://d280rtbt2yl4r" path="res://textures/shade_icon.png" id="2_dwt3q"]
+[ext_resource type="Texture2D" uid="uid://btl47jppswy73" path="res://textures/balloon_only.png" id="2_rrbcf"]
 
 [node name="balloon" type="Node2D"]
 
@@ -13,4 +13,6 @@ walkable = false
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-17, -57.65)
 scale = Vector2(1.82, 1.767)
-texture = ExtResource("2_dwt3q")
+texture = ExtResource("2_rrbcf")
+
+[connection signal="mouse_exited" from="capturable" to="capturable" method="_on_mouse_exited"]
