@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jgfu8alemrxr"]
 
-[ext_resource type="Texture2D" uid="uid://dcuddep1q2ccp" path="res://icon.svg" id="1_ap3mc"]
 [ext_resource type="PackedScene" uid="uid://14vhou66c4ng" path="res://objects/capturable.tscn" id="2_8rbjk"]
+[ext_resource type="Texture2D" uid="uid://bdsta5mo688bh" path="res://textures/ninja2.png" id="2_rkbjp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3u484"]
 size = Vector2(135.714, 132.143)
@@ -10,10 +10,11 @@ size = Vector2(135.714, 132.143)
 scale = Vector2(0.56, 0.56)
 motion_mode = 1
 
+[node name="capturable" parent="." instance=ExtResource("2_8rbjk")]
+scale = Vector2(0.635, 0.635)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ap3mc")
+texture = ExtResource("2_rkbjp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3u484")
-
-[node name="capturable" parent="." instance=ExtResource("2_8rbjk")]

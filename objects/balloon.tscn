@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5bigmtu6b6tp"]
+
+[ext_resource type="PackedScene" uid="uid://14vhou66c4ng" path="res://objects/capturable.tscn" id="1_a6vju"]
+[ext_resource type="Texture2D" uid="uid://d280rtbt2yl4r" path="res://textures/shade_icon.png" id="2_dwt3q"]
+
+[node name="balloon" type="Node2D"]
+
+[node name="capturable" parent="." instance=ExtResource("1_a6vju")]
+scale = Vector2(0.265, 0.265)
+shadow_worth = 700
+walkable = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-17, -57.65)
+scale = Vector2(1.82, 1.767)
+texture = ExtResource("2_dwt3q")

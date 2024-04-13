@@ -5,13 +5,14 @@ signal captured_position_signal
 signal captured_walkable_signal
 
 var current_level = 0
+var CURRENT_SHADOW_CONTROLLER: ShadowController
 
 func start_win_sequence():
 	#TODO: play sound
 	load_next_level()
 
 func count_levels():
-	return 2
+	return 1
 	#var dir = DirAccess.open("res://levels/")
 	#var file_name = dir.get_next()
 	#var ret = 0

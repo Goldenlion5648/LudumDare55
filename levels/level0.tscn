@@ -1,14 +1,44 @@
-[gd_scene load_steps=8 format=3 uid="uid://b36n5100v6a65"]
+[gd_scene load_steps=12 format=3 uid="uid://b36n5100v6a65"]
 
+[ext_resource type="Script" path="res://levels/level_settings.gd" id="1_0nrqt"]
 [ext_resource type="Script" path="res://objects/shadowPowerLabel.gd" id="1_j0wv8"]
+[ext_resource type="Texture2D" uid="uid://b4trviivabidl" path="res://textures/shadow_icon.png" id="2_0d54a"]
 [ext_resource type="PackedScene" uid="uid://c47saxuqrc270" path="res://objects/win_button.tscn" id="2_kd3ld"]
 [ext_resource type="Script" path="res://objects/shadow_controller.gd" id="3_d1x70"]
+[ext_resource type="Texture2D" uid="uid://d280rtbt2yl4r" path="res://textures/shade_icon.png" id="3_tsu57"]
 [ext_resource type="PackedScene" uid="uid://jgfu8alemrxr" path="res://objects/player.tscn" id="4_fiee0"]
+[ext_resource type="Texture2D" uid="uid://ijnky51mi3a4" path="res://textures/light_icon.png" id="4_hhd8u"]
 [ext_resource type="Script" path="res://objects/player.gd" id="5_siak4"]
 [ext_resource type="PackedScene" uid="uid://d4m15mq6e5jsn" path="res://objects/captureable_character.tscn" id="6_tfmjb"]
 [ext_resource type="PackedScene" uid="uid://ct20hjxw8kjjl" path="res://objects/wall_holder.tscn" id="7_p3mkn"]
 
 [node name="level0" type="Node2D"]
+script = ExtResource("1_0nrqt")
+
+[node name="shadow_controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "balloons_icon", "lights_icon")]
+unique_name_in_owner = true
+script = ExtResource("3_d1x70")
+player = NodePath("../player")
+starting_shadow_power = 200
+balloons_icon = NodePath("../Control/hotbarHbox/balloon_icon")
+lights_icon = NodePath("../Control/hotbarHbox/light_icon")
+
+[node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_kd3ld")]
+position = Vector2(200, -205)
+node_to_remove = NodePath("../wall_holder")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("4_fiee0")]
+unique_name_in_owner = true
+position = Vector2(0, 57)
+platform_wall_layers = 1
+script = ExtResource("5_siak4")
+
+[node name="captureableCharacter" parent="." instance=ExtResource("6_tfmjb")]
+position = Vector2(-17, -198)
+
+[node name="wall_holder" parent="." instance=ExtResource("7_p3mkn")]
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(1280, 720)
@@ -32,8 +62,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -300.0
-offset_bottom = 250.0
+offset_left = -317.0
+offset_top = 14.0
+offset_right = -17.0
+offset_bottom = 264.0
 grow_horizontal = 0
 theme_override_constants/text_highlight_h_padding = 30
 theme_override_constants/text_highlight_v_padding = 0
@@ -44,23 +76,42 @@ fit_content = true
 script = ExtResource("1_j0wv8")
 shadow_controller = NodePath("../../shadow_controller")
 
-[node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_kd3ld")]
-position = Vector2(200, -205)
-node_to_remove = NodePath("../wall_holder")
+[node name="hotbarHbox" type="HBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -115.0
+offset_right = 210.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="shadow_controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-unique_name_in_owner = true
-script = ExtResource("3_d1x70")
-player = NodePath("../player")
+[node name="shadow_icon" type="TextureButton" parent="Control/hotbarHbox"]
+layout_mode = 2
+texture_normal = ExtResource("2_0d54a")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="balloon_icon" type="TextureButton" parent="Control/hotbarHbox"]
+layout_mode = 2
+texture_normal = ExtResource("3_tsu57")
 
-[node name="player" parent="." instance=ExtResource("4_fiee0")]
-position = Vector2(0, 57)
-platform_wall_layers = 1
-script = ExtResource("5_siak4")
+[node name="light_icon" type="TextureButton" parent="Control/hotbarHbox"]
+layout_mode = 2
+texture_normal = ExtResource("4_hhd8u")
 
-[node name="captureableCharacter" parent="." instance=ExtResource("6_tfmjb")]
-position = Vector2(-17, -198)
+[node name="light_holder" type="Node2D" parent="."]
+visible = false
 
-[node name="wall_holder" parent="." instance=ExtResource("7_p3mkn")]
+[node name="test_light" type="Node2D" parent="light_holder"]
+
+[node name="Area2D" type="Area2D" parent="light_holder/test_light"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="light_holder/test_light/Area2D"]
+position = Vector2(-325, 5)
+polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://5uad5qegnup8"]
+
+[ext_resource type="Texture2D" uid="uid://ijnky51mi3a4" path="res://textures/light_icon.png" id="1_emorc"]
+[ext_resource type="Script" path="res://objects/capturable.gd" id="1_tk3x4"]
+[ext_resource type="Texture2D" uid="uid://cvrvx72wst1sh" path="res://textures/captureable_shadow.png" id="2_utnes"]
+
+[node name="light" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_emorc")
+
+[node name="capturable" type="Area2D" parent="."]
+visible = false
+script = ExtResource("1_tk3x4")
+
+[node name="Sprite2D" type="Sprite2D" parent="capturable"]
+scale = Vector2(1.37, 1.33)
+texture = ExtResource("2_utnes")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="capturable"]
+polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
+
+[connection signal="mouse_entered" from="capturable" to="capturable" method="_on_mouse_entered"]

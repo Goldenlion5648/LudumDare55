@@ -44,14 +44,14 @@ fit_content = true
 script = ExtResource("1_7fxcj")
 shadow_controller = NodePath("../../shadow_controller")
 
-[node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_6bkph")]
-position = Vector2(200, -205)
-node_to_remove = NodePath("../wall_holder")
-
 [node name="shadow_controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 script = ExtResource("3_c44ad")
 player = NodePath("../player")
+
+[node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_6bkph")]
+position = Vector2(200, -205)
+node_to_remove = NodePath("../wall_holder")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
