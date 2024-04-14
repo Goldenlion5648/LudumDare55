@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce1mt7lm8yqu3"]
+[gd_scene load_steps=10 format=3 uid="uid://ce1mt7lm8yqu3"]
 
 [ext_resource type="Script" path="res://objects/shadow_controller.gd" id="1_2s12g"]
 [ext_resource type="PackedScene" uid="uid://c47saxuqrc270" path="res://objects/win_button.tscn" id="2_774sp"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d4m15mq6e5jsn" path="res://objects/captureable_character.tscn" id="5_2nhyv"]
 [ext_resource type="PackedScene" uid="uid://ct20hjxw8kjjl" path="res://objects/wall_holder.tscn" id="6_lh6l7"]
 [ext_resource type="PackedScene" uid="uid://cxtcvyjqensai" path="res://objects/ui_holder.tscn" id="7_y7sc3"]
+[ext_resource type="PackedScene" uid="uid://cokodeof6ddtx" path="res://particles/balloon_particles.tscn" id="8_5itc5"]
+[ext_resource type="Script" path="res://particles/balloon_particles.gd" id="9_lc81v"]
 
 [node name="level2" type="Node2D"]
 
@@ -37,3 +39,12 @@ position = Vector2(-496, 196)
 scale = Vector2(0.400001, 1)
 
 [node name="ui_holder" parent="." instance=ExtResource("7_y7sc3")]
+
+[node name="balloon_particles" parent="." instance=ExtResource("8_5itc5")]
+position = Vector2(538, 277)
+emitting = false
+lifetime = 1.5
+initial_velocity_max = 101.85
+angular_velocity_max = 10.0
+orbit_velocity_min = -0.4
+script = ExtResource("9_lc81v")

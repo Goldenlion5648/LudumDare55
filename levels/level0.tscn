@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b36n5100v6a65"]
+[gd_scene load_steps=9 format=3 uid="uid://b36n5100v6a65"]
 
+[ext_resource type="PackedScene" uid="uid://dfsvjahgsc7lm" path="res://objects/background_holder.tscn" id="1_odmns"]
 [ext_resource type="PackedScene" uid="uid://c47saxuqrc270" path="res://objects/win_button.tscn" id="2_kd3ld"]
 [ext_resource type="Script" path="res://objects/shadow_controller.gd" id="3_d1x70"]
 [ext_resource type="PackedScene" uid="uid://jgfu8alemrxr" path="res://objects/player.tscn" id="4_fiee0"]
@@ -9,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://ct20hjxw8kjjl" path="res://objects/wall_holder.tscn" id="7_p3mkn"]
 
 [node name="level0" type="Node2D"]
+
+[node name="background_holder" parent="." instance=ExtResource("1_odmns")]
+visible = false
 
 [node name="shadow_controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 unique_name_in_owner = true

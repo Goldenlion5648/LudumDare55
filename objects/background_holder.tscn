@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfsvjahgsc7lm"]
+
+[ext_resource type="Texture2D" uid="uid://3y8g6fr7tnyd" path="res://textures/background2.png" id="1_spw6t"]
+
+[node name="background_holder" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_spw6t")

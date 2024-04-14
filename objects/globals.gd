@@ -13,6 +13,8 @@ signal used_shadow_ability
 signal retrack_shadows_signal
 signal play_win_sound_signal
 
+signal button_pressed_signal
+
 
 enum SelectableAbilities{
 	NormalShadow=0,
@@ -21,7 +23,7 @@ enum SelectableAbilities{
 }
 
 
-var current_level = 0
+var current_level = 2
 var CURRENT_SHADOW_CONTROLLER: ShadowController
 
 var selected_ability: SelectableAbilities

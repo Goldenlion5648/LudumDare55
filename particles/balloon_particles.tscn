@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cokodeof6ddtx"]
+
+[ext_resource type="Texture2D" uid="uid://btl47jppswy73" path="res://textures/balloon_only.png" id="1_rogu6"]
+
+[node name="balloon_particles" type="CPUParticles2D"]
+lifetime = 3.0
+texture = ExtResource("1_rogu6")
+gravity = Vector2(-300, -90)
+scale_amount_min = 0.4
+scale_amount_max = 0.7

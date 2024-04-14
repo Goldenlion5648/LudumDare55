@@ -3,7 +3,11 @@ class_name CapturableComponent
 
 @export var shadow_worth = 100
 @export var walkable = true
-var is_captured = false
+var is_captured = false:
+	set(val):
+		is_captured = val
+		change_color()
+
 
 var mouse_is_inside = false
 
@@ -27,6 +31,16 @@ func try_capture():
 func _on_mouse_exited() -> void:
 	mouse_is_inside = false
 	# print("mouse exited")
+
+func change_color():
+	print("changed color")
+	prints("is captured", is_captured)
+	if is_captured and self.get_parent().name != "player":
+		self.get_parent().modulate = Color(0.2745, 0.1608, 0.1608, 1)
+	else:
+		self.get_parent().modulate = Color(1, 1, 1, 1)
+		#(self as Node2D).get_parent()
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouse and mouse_is_inside:

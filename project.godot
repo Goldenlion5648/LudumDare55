@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+BackgroundHolder="*res://objects/background_holder.tscn"
 Globals="*res://objects/globals.gd"
 SoundController="*res://objects/sound_controller.tscn"
 

@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddxtl6kpdjh2m"]
+[gd_scene load_steps=11 format=3 uid="uid://ddxtl6kpdjh2m"]
 
 [ext_resource type="Script" path="res://objects/sound_controller.gd" id="1_bgbxt"]
 [ext_resource type="AudioStream" uid="uid://dmukiwpe57c8l" path="res://sounds/capture_sound.wav" id="2_l4tsh"]
 [ext_resource type="AudioStream" uid="uid://cqx6ffloxoaws" path="res://sounds/summon_balloon2.wav" id="3_8vbgq"]
 [ext_resource type="AudioStream" uid="uid://cn5kpl2h77hvp" path="res://sounds/balloon2.wav" id="4_gqfb3"]
 [ext_resource type="AudioStream" uid="uid://sa28r5xxv8oa" path="res://sounds/summon_shadow.wav" id="4_rnvb8"]
-[ext_resource type="AudioStream" uid="uid://bv4b5txcqmr5d" path="res://sounds/retrack_shadow.wav" id="5_40pxl"]
+[ext_resource type="AudioStream" uid="uid://bbola3xhiywvj" path="res://sounds/shadow2.wav" id="6_eh0a3"]
 [ext_resource type="AudioStream" uid="uid://dkcxvwijgfx" path="res://sounds/win_sound.wav" id="6_md17t"]
+[ext_resource type="AudioStream" uid="uid://e73rwqhuo1wt" path="res://sounds/retract2.wav" id="7_swas1"]
 [ext_resource type="AudioStream" uid="uid://dun0eodk1guol" path="res://sounds/background.wav" id="7_ux8g0"]
 [ext_resource type="AudioStream" uid="uid://bcad1teqw6660" path="res://sounds/select_ability.wav" id="8_bj2fl"]
 
@@ -29,8 +30,13 @@ volume_db = 1.317
 stream = ExtResource("4_rnvb8")
 volume_db = 4.651
 
+[node name="summon_shadow2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_eh0a3")
+volume_db = 5.12
+pitch_scale = 0.84
+
 [node name="retract_shadows" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_40pxl")
+stream = ExtResource("7_swas1")
 
 [node name="win_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_md17t")

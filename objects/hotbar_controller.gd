@@ -32,12 +32,18 @@ func _ready() -> void:
 func _on_shadow_icon_pressed() -> void:
 	Globals.selected_ability = Globals.SelectableAbilities.NormalShadow
 	Globals.selected_ability_changed.emit(Globals.SHADOW_ICON)
+	Globals.SHADOW_ICON.hide()
+	Globals.SHADOW_ICON.show()
 	
 
 func _on_balloon_icon_pressed() -> void:
 	Globals.selected_ability = Globals.SelectableAbilities.PlaceBalloon
 	Globals.selected_ability_changed.emit(Globals.BALLOON_ICON)
+	Globals.BALLOON_ICON.hide()
+	Globals.BALLOON_ICON.show()
 
 func _on_light_icon_pressed() -> void:
 	Globals.selected_ability = Globals.SelectableAbilities.ThrowLight
 	Globals.selected_ability_changed.emit(Globals.LIGHT_ICON)
+	Globals.LIGHT_ICON.hide()
+	Globals.LIGHT_ICON.show()

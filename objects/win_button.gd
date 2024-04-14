@@ -9,6 +9,8 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	Globals.win_buttons_pressed += 1
 	print("was entered")
+	self.modulate = Color(0.7, 0.7, 0.7, 1)
+	Globals.button_pressed_signal.emit()
 	if Globals.win_buttons_pressed == Globals.total_win_button_count:
 		node_to_remove.fade_kids()
 		Globals.play_win_sound_signal.emit()

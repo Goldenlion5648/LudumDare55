@@ -17,11 +17,11 @@ position = Vector2(161, 129)
 scale = Vector2(3.8, 0.24)
 
 [node name="wall3" parent="." instance=ExtResource("1_ttikn")]
-position = Vector2(537, 53)
+position = Vector2(531, 55)
 rotation = 1.57079
-scale = Vector2(1.01684, 0.200001)
+scale = Vector2(0.74, 0.2)
 
 [node name="wall6" parent="." instance=ExtResource("1_ttikn")]
-position = Vector2(-198, 53)
+position = Vector2(-198, 55)
 rotation = 1.57079
-scale = Vector2(1.01684, 0.200001)
+scale = Vector2(0.74, 0.2)

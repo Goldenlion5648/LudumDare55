@@ -58,6 +58,23 @@ Remaining[/right]"
 fit_content = true
 script = ExtResource("1_dy5iy")
 
+[node name="reset_hint" type="RichTextLabel" parent="."]
+layout_mode = 1
+offset_right = 141.0
+offset_bottom = 108.0
+mouse_filter = 1
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/line_separation = -12
+theme_override_constants/outline_size = 2
+theme_override_constants/text_highlight_h_padding = 30
+theme_override_constants/text_highlight_v_padding = 0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[outline_color=black][left]Press R 
+to Reset[/left]"
+fit_content = true
+
 [node name="hotbar_holder" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -65,21 +82,23 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -300.0
+offset_left = -248.0
+offset_top = -244.0
+offset_right = 52.0
+offset_bottom = 56.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="hotbar_label" type="RichTextLabel" parent="hotbar_holder"]
-custom_minimum_size = Vector2(450, 100)
+custom_minimum_size = Vector2(360, 220)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -122.0
-offset_top = -91.0
-offset_right = 28.0
-offset_bottom = -176.0
+offset_left = -108.0
+offset_top = -79.0
+offset_right = -48.0
+offset_bottom = -159.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -98,12 +117,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -13.0
-offset_top = 123.0
-offset_right = 7.0
-offset_bottom = -77.0
+offset_left = -32.0
+offset_top = 155.0
+offset_right = -12.0
+offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 theme = SubResource("Theme_af8em")
 theme_override_constants/separation = 10
 script = ExtResource("2_1vfup")
@@ -155,15 +175,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -125.0
-offset_top = 228.0
-offset_right = 118.0
-offset_bottom = -3.0
+offset_left = -652.0
+offset_top = 169.0
+offset_right = -362.0
+offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
-text = "Hotkeys       1            2"
+text = "Use the 1 and 2 hotkeys or click to switch"
 script = ExtResource("10_ljosc")
 
 [connection signal="pressed" from="hotbar_holder/hotbarHbox/shadow_icon" to="hotbar_holder/hotbarHbox" method="_on_shadow_icon_pressed"]
