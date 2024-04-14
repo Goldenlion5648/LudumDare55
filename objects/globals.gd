@@ -23,7 +23,7 @@ enum SelectableAbilities{
 }
 
 
-var current_level = 0
+var current_level = 4
 var CURRENT_SHADOW_CONTROLLER: ShadowController
 
 var selected_ability: SelectableAbilities
@@ -56,9 +56,12 @@ func count_levels():
 
 func load_next_level():
 	current_level += 1
-	current_level %= count_levels()
-	get_tree().change_scene_to_file.call_deferred("res://levels/level%d.tscn" % [current_level])
-	
+	if current_level == count_levels():
+		current_level %= count_levels()
+		get_tree().change_scene_to_file.call_deferred("res://objects/ending.tscn")
+	else:
+		get_tree().change_scene_to_file.call_deferred("res://levels/level%d.tscn" % [current_level])
+
 func reload_current_level():
 	if "level" not in get_tree().current_scene.name:
 		get_tree().change_scene_to_file.call_deferred("res://levels/level%d.tscn" % [current_level])

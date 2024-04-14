@@ -4,16 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://cvrvx72wst1sh" path="res://textures/captureable_shadow.png" id="2_sfqtc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwhiy"]
+resource_local_to_scene = true
 radius = 127.318
 
-[node name="capturable" type="Area2D" groups=["capturable"]]
+[node name="capturable" type="Area2D" node_paths=PackedStringArray("collisionShape") groups=["capturable"]]
 script = ExtResource("1_jmfgo")
+collisionShape = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.37, 1.33)
 texture = ExtResource("2_sfqtc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_gwhiy")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

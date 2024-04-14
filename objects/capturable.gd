@@ -3,6 +3,7 @@ class_name CapturableComponent
 
 @export var shadow_worth = 100
 @export var walkable = true
+@export var collisionShape: CollisionShape2D
 var is_captured = false:
 	set(val):
 		is_captured = val
@@ -18,7 +19,7 @@ func _on_mouse_entered() -> void:
 func is_in_range():
 	var temp_shadow_controller = (Globals.CURRENT_SHADOW_CONTROLLER)
 	var dist = (temp_shadow_controller.get_objects_as_points()[-1]).distance_to((self as Node2D).global_position)
-	return dist <= temp_shadow_controller.calculate_remaining_shadow_power_without_mouse()
+	return dist - collisionShape.shape.radius < temp_shadow_controller.calculate_remaining_shadow_power_without_mouse()
 		
 func try_capture():
 	var temp_shadow_controller = (Globals.CURRENT_SHADOW_CONTROLLER)

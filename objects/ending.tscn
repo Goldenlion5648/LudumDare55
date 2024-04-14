@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnepr611v2r1c"]
+[gd_scene load_steps=2 format=3 uid="uid://d1k88rk5uk6lg"]
 
-[ext_resource type="Script" path="res://objects/intro.gd" id="1_hm4tx"]
+[ext_resource type="Script" path="res://objects/intro.gd" id="1_deyjx"]
 
-[node name="intro" type="Node2D" node_paths=PackedStringArray("story_text")]
-script = ExtResource("1_hm4tx")
+[node name="ending" type="Node2D" node_paths=PackedStringArray("story_text")]
+script = ExtResource("1_deyjx")
 story_text = NodePath("Control/story_text")
 
 [node name="Control" type="Control" parent="."]
@@ -37,9 +37,11 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[center]You have been captured by evil ninjas! 
-                        
-Summon shadows to take control of them and escape!
-                             
-Press any button to start[/center]"
+text = "[center]You escaped the evil ninjas! 
+                                     
+
+(Many times)
+                 
+Thanks for playing!
+Press any button to play again[/center]"
 visible_characters_behavior = 1

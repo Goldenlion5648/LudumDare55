@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="LudumDare55"
-run/main_scene="res://levels/level0.tscn"
+run/main_scene="res://objects/intro.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://textures/cover.png"
 
 [autoload]
 
