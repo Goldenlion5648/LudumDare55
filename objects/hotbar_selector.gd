@@ -29,7 +29,3 @@ func scale_in_out():
 				is_scaling_out = true
 		await get_tree().create_timer(0.01).timeout
 		
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

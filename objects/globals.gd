@@ -23,7 +23,7 @@ enum SelectableAbilities{
 }
 
 
-var current_level = 2
+var current_level = 0
 var CURRENT_SHADOW_CONTROLLER: ShadowController
 
 var selected_ability: SelectableAbilities
@@ -40,7 +40,7 @@ func start_win_sequence():
 	load_next_level()
 
 func count_levels():
-	return 4
+	return 5
 	#var dir = DirAccess.open("res://levels/")
 	#var file_name = dir.get_next()
 	#var ret = 0

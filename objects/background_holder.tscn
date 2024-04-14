@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfsvjahgsc7lm"]
 
-[ext_resource type="Texture2D" uid="uid://3y8g6fr7tnyd" path="res://textures/background2.png" id="1_spw6t"]
+[ext_resource type="Texture2D" uid="uid://dw6m5ft1n45jk" path="res://textures/background3.png" id="1_lilpr"]
 
 [node name="background_holder" type="Control"]
 layout_mode = 3
@@ -19,4 +19,4 @@ mouse_filter = 1
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_spw6t")
+texture = ExtResource("1_lilpr")

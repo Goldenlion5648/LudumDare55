@@ -33,8 +33,8 @@ func _on_mouse_exited() -> void:
 	# print("mouse exited")
 
 func change_color():
-	print("changed color")
-	prints("is captured", is_captured)
+	# print("changed color")
+	# prints("is captured", is_captured)
 	if is_captured and self.get_parent().name != "player":
 		self.get_parent().modulate = Color(0.2745, 0.1608, 0.1608, 1)
 	else:

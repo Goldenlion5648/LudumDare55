@@ -19,6 +19,3 @@ func fade_kids():
 		current_fade_time += step
 		await get_tree().create_timer(step).timeout
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

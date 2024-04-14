@@ -2,7 +2,7 @@ extends Node2D
 class_name ShadowController
 
 var captured_objects = []
-var walk_speed = 4
+var walk_speed = 300
 var old_mouse_positions = []
 
 @export var player : CharacterBody2D
@@ -146,7 +146,7 @@ func _physics_process(delta: float) -> void:
 	#change += int(Input.is_action_pressed("walk_down")) * Vector2(0, 1)
 	change += int(Input.is_action_pressed("walk_left")) * Vector2(-1, 0)
 	change += int(Input.is_action_pressed("walk_right")) * Vector2(1, 0)
-	change *= walk_speed
+	change *= walk_speed * delta
 	if get_shadow_power_to_display() <= 1 and len(captured_objects) > 1:
 		var current_distance = (captured_objects[0].global_position as Vector2).distance_to(captured_objects[1].global_position)
 		var new_distance = (captured_objects[0].global_position + change as Vector2).distance_to(captured_objects[1].global_position)
@@ -165,7 +165,6 @@ func _physics_process(delta: float) -> void:
 			break
 
 func _input(event: InputEvent) -> void:
-	pass
 	if event is InputEventMouse:
 		queue_redraw()
 

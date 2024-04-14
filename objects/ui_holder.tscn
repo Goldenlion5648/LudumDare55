@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxtcvyjqensai"]
+[gd_scene load_steps=15 format=3 uid="uid://cxtcvyjqensai"]
 
 [ext_resource type="Script" path="res://objects/shadowPowerLabel.gd" id="1_dy5iy"]
 [ext_resource type="Script" path="res://objects/hotbar_controller.gd" id="2_1vfup"]
 [ext_resource type="Script" path="res://objects/hotbar_label.gd" id="2_i3ga4"]
+[ext_resource type="Texture2D" uid="uid://dy4yl1ehtmuul" path="res://textures/panel.png" id="2_o3045"]
 [ext_resource type="Texture2D" uid="uid://b4trviivabidl" path="res://textures/shadow_icon.png" id="2_r81cq"]
 [ext_resource type="Texture2D" uid="uid://bxh4hx8gup5e4" path="res://textures/selection_indicator.png" id="3_g2cvo"]
 [ext_resource type="Script" path="res://objects/hotbar_selector.gd" id="4_jun13"]
@@ -75,6 +76,25 @@ text = "[outline_color=black][left]Press R
 to Reset[/left]"
 fit_content = true
 
+[node name="hotkeys_label" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -99.0
+offset_right = 267.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/line_separation = -10
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Use the  [wave amp=30.0 freq=3.37 connected=1]1[/wave] and [wave amp=30.0 freq=3.1 connected=1]2[/wave] hotkeys or click to change active ability"
+script = ExtResource("10_ljosc")
+
 [node name="hotbar_holder" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -88,6 +108,22 @@ offset_right = 52.0
 offset_bottom = 56.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="hotbar_holder"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -427.0
+offset_top = -404.0
+offset_right = -27.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_o3045")
 
 [node name="hotbar_label" type="RichTextLabel" parent="hotbar_holder"]
 custom_minimum_size = Vector2(360, 220)
@@ -169,22 +205,6 @@ script = ExtResource("8_e2ccc")
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("6_66cn8")
-
-[node name="hotkeys_label" type="RichTextLabel" parent="hotbar_holder"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -652.0
-offset_top = 169.0
-offset_right = -362.0
-offset_bottom = -62.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "Use the 1 and 2 hotkeys or click to switch"
-script = ExtResource("10_ljosc")
 
 [connection signal="pressed" from="hotbar_holder/hotbarHbox/shadow_icon" to="hotbar_holder/hotbarHbox" method="_on_shadow_icon_pressed"]
 [connection signal="pressed" from="hotbar_holder/hotbarHbox/balloon_icon" to="hotbar_holder/hotbarHbox" method="_on_balloon_icon_pressed"]

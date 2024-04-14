@@ -9,7 +9,7 @@ func _ready() -> void:
 	Globals.retrack_shadows_signal.connect(play_retract_shadows_sound)
 	Globals.play_win_sound_signal.connect(play_win_sound)
 	Globals.selected_ability_changed.connect(play_select_ability_sound)
-	Globals.button_pressed_signal.connect(play_select_ability_sound)
+	Globals.button_pressed_signal.connect(play_button_click_sound)
 	background_music.finished.connect(play_background_music)
 	play_background_music()
 	
@@ -18,6 +18,9 @@ func play_background_music():
 	
 func play_select_ability_sound(_extra):
 	$select_ability.play()
+	
+func play_button_click_sound():
+	$press_button.play()
 
 func play_capture_sound(_extra):
 	$capture_sound.play()
@@ -35,7 +38,3 @@ func play_retract_shadows_sound():
 
 func play_win_sound():
 	$win_sound.play()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
