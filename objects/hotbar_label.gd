@@ -8,12 +8,12 @@ func _ready() -> void:
 func update_text(_extra):
 	var ability_name = ""
 	if Globals.selected_ability == Globals.SelectableAbilities.NormalShadow:
-		ability_name = "Summon Shadow"
+		ability_name = "[font_size=45][outline_color=white][color=black]Summon Shadow[/color][/outline_color][/font_size]"
 	elif Globals.selected_ability == Globals.SelectableAbilities.PlaceBalloon:
-		ability_name = "Summon Shade"
+		ability_name = "[font_size=45][outline_color=white][color=darkred]Summon Balloon[/color][/outline_color][/font_size]"
 	else:
 		ability_name = "Summon Light"
-	self.text = "[center]Right click to activate:\n%s[/center]" % [ability_name]
+	self.text = "[center]Right click to activate:\n%s\nHover on Icon For Info[/center]" % [ability_name]
 	print('updated text')
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.

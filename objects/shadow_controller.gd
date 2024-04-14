@@ -166,7 +166,6 @@ func get_shadow_positions():
 	#prints("remaining", remaining)
 	distance_vector = distance_vector.limit_length((remaining))
 	ret.append(ret[-1] + distance_vector)
-	
 	return ret
 
 func get_total_shadow_length(points_to_calc_for) -> int:
@@ -182,7 +181,8 @@ func _draw() -> void:
 	if _debug:
 		print(shadow_positions)
 	if len(shadow_positions) > 1:
-		draw_polyline(shadow_positions, Color.BLACK, 20)
+		var color = Color.DARK_RED if get_shadow_power_to_display() <= 1 else Color.BLACK
+		draw_polyline(shadow_positions, color, 20)
 	#draw_polyline([Vector2(50, 100), Vector2(150, 100),Vector2(150, 100), Vector2(150, 200)], Color.BLACK, 10)
 		
 	#draw_line(%playerSprite.global_position, get_global_mouse_position(), Color.BLACK, 20)

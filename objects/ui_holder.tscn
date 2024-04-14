@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxtcvyjqensai"]
+[gd_scene load_steps=14 format=3 uid="uid://cxtcvyjqensai"]
 
 [ext_resource type="Script" path="res://objects/shadowPowerLabel.gd" id="1_dy5iy"]
 [ext_resource type="Script" path="res://objects/hotbar_controller.gd" id="2_1vfup"]
@@ -10,6 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://ijnky51mi3a4" path="res://textures/light_icon.png" id="6_66cn8"]
 [ext_resource type="Script" path="res://objects/balloons_textbox.gd" id="8_e2ccc"]
 [ext_resource type="Script" path="res://objects/hotkeys_label.gd" id="10_ljosc"]
+
+[sub_resource type="Theme" id="Theme_af8em"]
+default_font_size = 20
+
+[sub_resource type="InputEventKey" id="InputEventKey_4lh4x"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_ivu4t"]
+events = [SubResource("InputEventKey_4lh4x")]
 
 [node name="ui_holder" type="Control"]
 custom_minimum_size = Vector2(1280, 720)
@@ -70,15 +81,18 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -120.0
-offset_top = 4.0
+offset_top = -45.0
 offset_right = 30.0
-offset_bottom = 4.0
+offset_bottom = -146.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]Right click to activate:
-Shadow Summon[/center]
+Shadow Summon
+Hover on Icon For Info[/center]
 "
 script = ExtResource("2_i3ga4")
 
@@ -94,6 +108,7 @@ offset_right = 7.0
 offset_bottom = -77.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_af8em")
 theme_override_constants/separation = 10
 script = ExtResource("2_1vfup")
 shadow_icon = NodePath("shadow_icon")
@@ -102,6 +117,9 @@ lights_icon = NodePath("light_icon")
 
 [node name="shadow_icon" type="TextureButton" parent="hotbar_holder/hotbarHbox"]
 layout_mode = 2
+tooltip_text = "Extends shadow from furthest connected point."
+shortcut = SubResource("Shortcut_ivu4t")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("2_r81cq")
 
 [node name="selector" type="Sprite2D" parent="hotbar_holder/hotbarHbox/shadow_icon"]
@@ -112,6 +130,8 @@ script = ExtResource("4_jun13")
 
 [node name="balloon_icon" type="TextureButton" parent="hotbar_holder/hotbarHbox"]
 layout_mode = 2
+tooltip_text = "Places a balloon at the mouse location. This balloon extends the shadows reach."
+focus_mode = 1
 texture_normal = ExtResource("5_dfq47")
 
 [node name="balloons_textbox" type="RichTextLabel" parent="hotbar_holder/hotbarHbox/balloon_icon"]
@@ -120,6 +140,7 @@ offset_left = 54.0
 offset_top = 54.0
 offset_right = 94.0
 offset_bottom = 94.0
+mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "[center]2[center]"
