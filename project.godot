@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LudumDare55"
-run/main_scene="res://levels/level0.tscn"
+run/main_scene="res://objects/intro.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,10 @@ window/size/viewport_height=720
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/script-tabs/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://fonts/Oswald/static/Oswald-Regular.ttf"
 
 [input]
 

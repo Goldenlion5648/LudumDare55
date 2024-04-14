@@ -7,4 +7,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.text = "[right]Shadow Power\n%d[/right]" % [Globals.CURRENT_SHADOW_CONTROLLER.get_shadow_power_to_display()]
+	var number = Globals.CURRENT_SHADOW_CONTROLLER.get_shadow_power_to_display()
+	if number <= 1:
+		self.text = "[right]Shadow Length\nRemaining\n[color=red]%d[/color][/right]" % [number]
+	else:
+		self.text = "[right]Shadow Length\nRemaining\n%d[/right]" % [number]
+		

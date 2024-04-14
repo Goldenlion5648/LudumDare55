@@ -56,7 +56,7 @@ func hide_unavailable_icons():
 
 func add_captured_object(new_object):
 	captured_objects.append(new_object)
-	print_debug(captured_objects)
+	# print_debug(captured_objects)
 #
 #func add_captured_object(new_object):
 	#points_to_go_through.append(new_point)
@@ -72,12 +72,13 @@ func should_show_shadow_to_mouse():
 	return Globals.selected_ability == Globals.SelectableAbilities.NormalShadow and has_active_shadow
 	
 func allowed_to_capture():
-	return calculate_remaining_shadow_power() >= 0
+	return get_shadow_power_to_display() > 1
 
 func place_balloon():
 	if balloons_used >= balloons_allowed:
 		return
 	balloons_used += 1
+	Globals.used_balloon.emit(balloons_allowed - balloons_used)
 	var new_instance = balloon_default_instance.instantiate()
 	new_instance.global_position = get_global_mouse_position()
 	add_child(new_instance)
@@ -124,11 +125,17 @@ func get_shadow_power_to_display():
 
 func _physics_process(delta: float) -> void:
 	var change = Vector2(0,0)
-	change += int(Input.is_action_pressed("walk_up")) * Vector2(0, -1)
-	change += int(Input.is_action_pressed("walk_down")) * Vector2(0, 1)
+	#change += int(Input.is_action_pressed("walk_up")) * Vector2(0, -1)
+	#change += int(Input.is_action_pressed("walk_down")) * Vector2(0, 1)
 	change += int(Input.is_action_pressed("walk_left")) * Vector2(-1, 0)
 	change += int(Input.is_action_pressed("walk_right")) * Vector2(1, 0)
 	change *= walk_speed
+	if get_shadow_power_to_display() <= 1 and len(captured_objects) > 1:
+		var current_distance = (captured_objects[0].global_position as Vector2).distance_to(captured_objects[1].global_position)
+		var new_distance = (captured_objects[0].global_position + change as Vector2).distance_to(captured_objects[1].global_position)
+		if new_distance > current_distance:
+			return
+					
 	if change:
 		queue_redraw()
 	var is_first = true
@@ -137,6 +144,7 @@ func _physics_process(delta: float) -> void:
 		if current_capture_child != null:
 			if current_capture_child.walkable:
 				(object as Node2D).global_position += change
+				object.move_and_slide()
 		if player.is_on_wall():
 			break
 

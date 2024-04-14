@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxtcvyjqensai"]
+[gd_scene load_steps=11 format=3 uid="uid://cxtcvyjqensai"]
 
 [ext_resource type="Script" path="res://objects/shadowPowerLabel.gd" id="1_dy5iy"]
 [ext_resource type="Script" path="res://objects/hotbar_controller.gd" id="2_1vfup"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://objects/hotbar_selector.gd" id="4_jun13"]
 [ext_resource type="Texture2D" uid="uid://d280rtbt2yl4r" path="res://textures/shade_icon.png" id="5_dfq47"]
 [ext_resource type="Texture2D" uid="uid://ijnky51mi3a4" path="res://textures/light_icon.png" id="6_66cn8"]
+[ext_resource type="Script" path="res://objects/balloons_textbox.gd" id="8_e2ccc"]
+[ext_resource type="Script" path="res://objects/hotkeys_label.gd" id="10_ljosc"]
 
 [node name="ui_holder" type="Control"]
 custom_minimum_size = Vector2(1280, 720)
@@ -31,33 +33,48 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -317.0
-offset_top = 14.0
-offset_right = -17.0
-offset_bottom = 264.0
+offset_left = -403.0
+offset_top = -7.0
+offset_right = -12.0
+offset_bottom = 307.0
 grow_horizontal = 0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/line_separation = -12
+theme_override_constants/outline_size = 2
 theme_override_constants/text_highlight_h_padding = 30
 theme_override_constants/text_highlight_v_padding = 0
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[right]Shadow power[/right]"
+text = "[outline_color=black][right]Shadow Length
+Remaining[/right]"
 fit_content = true
 script = ExtResource("1_dy5iy")
 
-[node name="hotbar_label" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(450, 100)
+[node name="hotbar_holder" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -534.0
-offset_top = -181.0
-offset_right = -84.0
-offset_bottom = -141.0
+offset_left = -300.0
+offset_top = -300.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="hotbar_label" type="RichTextLabel" parent="hotbar_holder"]
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = 4.0
+offset_right = 30.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]Right click to activate:
@@ -65,44 +82,69 @@ Shadow Summon[/center]
 "
 script = ExtResource("2_i3ga4")
 
-[node name="hotbarHbox" type="HBoxContainer" parent="." node_paths=PackedStringArray("shadow_icon", "balloons_icon", "lights_icon")]
+[node name="hotbarHbox" type="HBoxContainer" parent="hotbar_holder" node_paths=PackedStringArray("shadow_icon", "balloons_icon", "lights_icon")]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -372.0
-offset_top = -142.0
-offset_right = -52.0
-offset_bottom = -42.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = -13.0
+offset_top = 123.0
+offset_right = 7.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 10
 script = ExtResource("2_1vfup")
 shadow_icon = NodePath("shadow_icon")
 balloons_icon = NodePath("balloon_icon")
 lights_icon = NodePath("light_icon")
 
-[node name="shadow_icon" type="TextureButton" parent="hotbarHbox"]
+[node name="shadow_icon" type="TextureButton" parent="hotbar_holder/hotbarHbox"]
 layout_mode = 2
 texture_normal = ExtResource("2_r81cq")
 
-[node name="selector" type="Sprite2D" parent="hotbarHbox/shadow_icon"]
+[node name="selector" type="Sprite2D" parent="hotbar_holder/hotbarHbox/shadow_icon"]
 position = Vector2(50, 50)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_g2cvo")
 script = ExtResource("4_jun13")
 
-[node name="balloon_icon" type="TextureButton" parent="hotbarHbox"]
+[node name="balloon_icon" type="TextureButton" parent="hotbar_holder/hotbarHbox"]
 layout_mode = 2
 texture_normal = ExtResource("5_dfq47")
 
-[node name="light_icon" type="TextureButton" parent="hotbarHbox"]
+[node name="balloons_textbox" type="RichTextLabel" parent="hotbar_holder/hotbarHbox/balloon_icon"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 54.0
+offset_right = 94.0
+offset_bottom = 94.0
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]2[center]"
+script = ExtResource("8_e2ccc")
+
+[node name="light_icon" type="TextureButton" parent="hotbar_holder/hotbarHbox"]
 layout_mode = 2
 texture_normal = ExtResource("6_66cn8")
 
-[connection signal="pressed" from="hotbarHbox/shadow_icon" to="hotbarHbox" method="_on_shadow_icon_pressed"]
-[connection signal="pressed" from="hotbarHbox/balloon_icon" to="hotbarHbox" method="_on_balloon_icon_pressed"]
-[connection signal="pressed" from="hotbarHbox/light_icon" to="hotbarHbox" method="_on_light_icon_pressed"]
+[node name="hotkeys_label" type="RichTextLabel" parent="hotbar_holder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = 228.0
+offset_right = 118.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "Hotkeys       1            2"
+script = ExtResource("10_ljosc")
+
+[connection signal="pressed" from="hotbar_holder/hotbarHbox/shadow_icon" to="hotbar_holder/hotbarHbox" method="_on_shadow_icon_pressed"]
+[connection signal="pressed" from="hotbar_holder/hotbarHbox/balloon_icon" to="hotbar_holder/hotbarHbox" method="_on_balloon_icon_pressed"]
+[connection signal="pressed" from="hotbar_holder/hotbarHbox/light_icon" to="hotbar_holder/hotbarHbox" method="_on_light_icon_pressed"]

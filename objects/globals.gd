@@ -7,6 +7,9 @@ signal captured_walkable_signal
 signal selected_ability_changed
 signal icons_setup
 
+signal used_balloon
+
+
 enum SelectableAbilities{
 	NormalShadow=0,
 	PlaceBalloon=1,
