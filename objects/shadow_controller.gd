@@ -135,6 +135,9 @@ func _process(delta: float) -> void:
 func calculate_remaining_shadow_power():
 	return get_allotted_shadow_power() - get_total_shadow_length(get_shadow_positions())
 
+func calculate_remaining_shadow_power_without_mouse():
+	return get_allotted_shadow_power() - get_total_shadow_length(get_objects_as_points())
+
 func get_shadow_power_to_display():
 	return max(0, ceili(calculate_remaining_shadow_power() / 10.0))
 
@@ -171,6 +174,9 @@ func _input(event: InputEvent) -> void:
 func get_objects_as_points():
 	return captured_objects.map(func(x):return x.global_position)
 
+
+
+
 func get_shadow_positions():
 	var ret = get_objects_as_points()
 	if not should_show_shadow_to_mouse():
@@ -196,6 +202,7 @@ func get_shadow_positions():
 	ret.append(ret[-1] + distance_vector)
 	return ret
 
+
 func get_total_shadow_length(points_to_calc_for) -> int:
 	var dist_between = 0
 	#var temp_positions = get_shadow_positions()
@@ -211,6 +218,7 @@ func _draw() -> void:
 	if len(shadow_positions) > 1:
 		var color = Color.DARK_RED if get_shadow_power_to_display() <= 1 else Color.BLACK
 		draw_polyline(shadow_positions, color, 20)
+		draw_circle(shadow_positions[-1], 10, color)
 	#draw_polyline([Vector2(50, 100), Vector2(150, 100),Vector2(150, 100), Vector2(150, 200)], Color.BLACK, 10)
 		
 	#draw_line(%playerSprite.global_position, get_global_mouse_position(), Color.BLACK, 20)

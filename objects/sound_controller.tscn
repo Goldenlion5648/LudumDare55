@@ -29,11 +29,11 @@ volume_db = 1.317
 
 [node name="summon_shadow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_rnvb8")
-volume_db = 7.462
+volume_db = 3.715
 
 [node name="summon_shadow2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_eh0a3")
-volume_db = 5.12
+volume_db = 1.372
 pitch_scale = 0.84
 
 [node name="retract_shadows" type="AudioStreamPlayer2D" parent="."]

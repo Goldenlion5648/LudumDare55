@@ -1,14 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl0ne3snf6v0y"]
+[gd_scene load_steps=5 format=3 uid="uid://dl0ne3snf6v0y"]
 
 [ext_resource type="Texture2D" uid="uid://2ohjaup0xw6a" path="res://textures/wall2.png" id="1_i3rfw"]
+[ext_resource type="Shader" path="res://shaders/laser_shader.gdshader" id="1_nela3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74tr0"]
+resource_local_to_scene = true
+shader = ExtResource("1_nela3")
+shader_parameter/alphaValue = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdo2v"]
 size = Vector2(200, 200)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="laserSprite" type="Sprite2D" parent="."]
 texture_repeat = 2
+material = SubResource("ShaderMaterial_74tr0")
 texture = ExtResource("1_i3rfw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

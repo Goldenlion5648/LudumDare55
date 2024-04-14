@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxtcvyjqensai"]
+[gd_scene load_steps=16 format=3 uid="uid://cxtcvyjqensai"]
 
 [ext_resource type="Script" path="res://objects/shadowPowerLabel.gd" id="1_dy5iy"]
 [ext_resource type="Script" path="res://objects/hotbar_controller.gd" id="2_1vfup"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ijnky51mi3a4" path="res://textures/light_icon.png" id="6_66cn8"]
 [ext_resource type="Script" path="res://objects/balloons_textbox.gd" id="8_e2ccc"]
 [ext_resource type="Script" path="res://objects/hotkeys_label.gd" id="10_ljosc"]
+[ext_resource type="Texture2D" uid="uid://dq0yt0803bqcn" path="res://textures/black_box.png" id="12_wld5c"]
 
 [sub_resource type="Theme" id="Theme_af8em"]
 default_font_size = 20
@@ -205,6 +206,16 @@ script = ExtResource("8_e2ccc")
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("6_66cn8")
+
+[node name="transition" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_wld5c")
 
 [connection signal="pressed" from="hotbar_holder/hotbarHbox/shadow_icon" to="hotbar_holder/hotbarHbox" method="_on_shadow_icon_pressed"]
 [connection signal="pressed" from="hotbar_holder/hotbarHbox/balloon_icon" to="hotbar_holder/hotbarHbox" method="_on_balloon_icon_pressed"]

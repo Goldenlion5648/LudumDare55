@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c6hj0dlec80d7" path="res://textures/button2.png" id="2_el61c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxhoa"]
-size = Vector2(196.825, 117.46)
+size = Vector2(158.73, 90.4762)
 
 [node name="win_button" type="Area2D"]
 scale = Vector2(0.63, 0.63)
@@ -23,7 +23,8 @@ bbcode_enabled = true
 text = "[center][wave amp=50.0 freq=3.0 connected=1]Release[/wave][/center]"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5873, -6.34921)
+position = Vector2(1.58731, -7.14285)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_gxhoa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

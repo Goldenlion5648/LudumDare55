@@ -27,7 +27,7 @@ node_to_remove = NodePath("../wall_holder")
 
 [node name="player" parent="." instance=ExtResource("3_ij3bd")]
 unique_name_in_owner = true
-position = Vector2(-514, 246)
+position = Vector2(-452, 154)
 platform_wall_layers = 1
 script = ExtResource("4_11o4a")
 
@@ -35,15 +35,16 @@ script = ExtResource("4_11o4a")
 position = Vector2(-17, -198)
 
 [node name="wall_holder" parent="." instance=ExtResource("6_lh6l7")]
-position = Vector2(-496, 196)
+position = Vector2(-434, 104)
 scale = Vector2(0.400001, 1)
 
 [node name="ui_holder" parent="." instance=ExtResource("7_y7sc3")]
 
 [node name="balloon_particles" parent="." instance=ExtResource("8_5itc5")]
-position = Vector2(538, 277)
+position = Vector2(495, 296)
 emitting = false
-lifetime = 1.5
+amount = 12
+lifetime = 2.0
 initial_velocity_max = 101.85
 angular_velocity_max = 10.0
 orbit_velocity_min = -0.4

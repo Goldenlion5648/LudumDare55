@@ -15,11 +15,18 @@ func _on_mouse_entered() -> void:
 	# print("mouse entered")
 	mouse_is_inside = true
 
+func is_in_range():
+	var temp_shadow_controller = (Globals.CURRENT_SHADOW_CONTROLLER)
+	var dist = (temp_shadow_controller.get_objects_as_points()[-1]).distance_to((self as Node2D).global_position)
+	return dist <= temp_shadow_controller.calculate_remaining_shadow_power_without_mouse()
+		
 func try_capture():
 	var temp_shadow_controller = (Globals.CURRENT_SHADOW_CONTROLLER)
 	if is_captured or (temp_shadow_controller == null) or \
 				not temp_shadow_controller.should_show_shadow_to_mouse() or\
-				not temp_shadow_controller.allowed_to_capture():
+				not temp_shadow_controller.get_objects_as_points() or\
+				not temp_shadow_controller.allowed_to_capture() or\
+				not is_in_range():
 		# print("got blocked")
 		return
 	is_captured = true

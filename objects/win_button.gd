@@ -5,14 +5,14 @@ var has_been_pressed = false
 
 func _ready() -> void:
 	Globals.total_win_button_count += 1
-	prints("total_win_button_count", Globals.total_win_button_count)
+	# prints("total_win_button_count", Globals.total_win_button_count)
 
 func _on_body_entered(body: Node2D) -> void:
 	if has_been_pressed:
 		return
 	has_been_pressed = true
 	Globals.win_buttons_pressed += 1
-	print("was entered")
+	# print("was entered")
 	self.modulate = Color(0.7, 0.7, 0.7, 1)
 	Globals.button_pressed_signal.emit()
 	if Globals.win_buttons_pressed == Globals.total_win_button_count:

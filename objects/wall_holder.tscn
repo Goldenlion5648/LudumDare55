@@ -1,27 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://ct20hjxw8kjjl"]
+[gd_scene load_steps=6 format=3 uid="uid://ct20hjxw8kjjl"]
 
-[ext_resource type="Material" uid="uid://dm34c6mya7a5j" path="res://shaders/fade_out_material.tres" id="1_5xass"]
 [ext_resource type="PackedScene" uid="uid://dl0ne3snf6v0y" path="res://objects/wall.tscn" id="1_ttikn"]
 [ext_resource type="Script" path="res://objects/wall_holder.gd" id="2_waf4y"]
+[ext_resource type="Shader" path="res://shaders/laser_shader.gdshader" id="4_ihciu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxpk4"]
+shader = ExtResource("4_ihciu")
+shader_parameter/alphaValue = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h18cv"]
+shader = ExtResource("4_ihciu")
+shader_parameter/alphaValue = 1.0
 
 [node name="wall_holder" type="Node2D"]
-material = ExtResource("1_5xass")
+material = SubResource("ShaderMaterial_jxpk4")
 script = ExtResource("2_waf4y")
 
-[node name="wall" parent="." instance=ExtResource("1_ttikn")]
-position = Vector2(161, -23)
-scale = Vector2(3.8, 0.24)
-
-[node name="wall4" parent="." instance=ExtResource("1_ttikn")]
-position = Vector2(161, 129)
-scale = Vector2(3.8, 0.24)
-
 [node name="wall3" parent="." instance=ExtResource("1_ttikn")]
+use_parent_material = true
 position = Vector2(531, 55)
 rotation = 1.57079
 scale = Vector2(0.74, 0.2)
 
 [node name="wall6" parent="." instance=ExtResource("1_ttikn")]
+use_parent_material = true
 position = Vector2(-198, 55)
 rotation = 1.57079
 scale = Vector2(0.74, 0.2)
+
+[node name="wall" parent="." instance=ExtResource("1_ttikn")]
+material = SubResource("ShaderMaterial_h18cv")
+use_parent_material = true
+position = Vector2(161, -23)
+scale = Vector2(3.8, 0.24)
+
+[node name="wall4" parent="." instance=ExtResource("1_ttikn")]
+use_parent_material = true
+position = Vector2(161, 129)
+scale = Vector2(3.8, 0.24)
