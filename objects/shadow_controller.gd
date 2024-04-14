@@ -29,6 +29,8 @@ func _ready() -> void:
 	Globals.captured_object_signal.connect(add_captured_object)
 	# await get_tree().create_timer(0.2).timeout
 	Globals.icons_setup.connect(hide_unavailable_icons)
+	Globals.selected_ability = Globals.SelectableAbilities.NormalShadow
+	Globals.selected_ability_changed.emit(Globals.SHADOW_ICON)
 
 	
 	#Globals.captured_walkable_signal.connect(add_captured_walkable)
@@ -64,6 +66,8 @@ func add_captured_object(new_object):
 func setup_captured_objects():
 	for object in captured_objects:
 		object.get_node("capturable").is_captured = false
+	if len(captured_objects) > 1:
+		Globals.retrack_shadows_signal.emit()
 	captured_objects = [player]
 	player.get_node("capturable").is_captured = true
 	queue_redraw()
@@ -78,7 +82,7 @@ func place_balloon():
 	if balloons_used >= balloons_allowed:
 		return
 	balloons_used += 1
-	Globals.used_balloon.emit(balloons_allowed - balloons_used)
+	Globals.used_balloon_ability.emit(balloons_allowed - balloons_used)
 	var new_instance = balloon_default_instance.instantiate()
 	new_instance.global_position = get_global_mouse_position()
 	add_child(new_instance)
@@ -87,6 +91,8 @@ func activate_selected_ability():
 	match Globals.selected_ability:
 		Globals.SelectableAbilities.NormalShadow:
 			has_active_shadow = not has_active_shadow
+			if has_active_shadow:
+				Globals.used_shadow_ability.emit()
 		Globals.SelectableAbilities.PlaceBalloon:
 			place_balloon()
 		Globals.SelectableAbilities.ThrowLight:
@@ -138,7 +144,6 @@ func _physics_process(delta: float) -> void:
 					
 	if change:
 		queue_redraw()
-	var is_first = true
 	for object in captured_objects:
 		var current_capture_child = (object as Node2D).get_node("capturable") as CapturableComponent
 		if current_capture_child != null:

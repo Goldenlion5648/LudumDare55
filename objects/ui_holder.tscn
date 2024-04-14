@@ -29,10 +29,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -640.0
-offset_top = -360.0
-offset_right = 640.0
-offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -117,7 +113,8 @@ lights_icon = NodePath("light_icon")
 
 [node name="shadow_icon" type="TextureButton" parent="hotbar_holder/hotbarHbox"]
 layout_mode = 2
-tooltip_text = "Extends shadow from furthest connected point."
+tooltip_text = "Extends shadow from furthest 
+connected point."
 shortcut = SubResource("Shortcut_ivu4t")
 shortcut_in_tooltip = false
 texture_normal = ExtResource("2_r81cq")
@@ -130,7 +127,9 @@ script = ExtResource("4_jun13")
 
 [node name="balloon_icon" type="TextureButton" parent="hotbar_holder/hotbarHbox"]
 layout_mode = 2
-tooltip_text = "Places a balloon at the mouse location. This balloon extends the shadows reach."
+tooltip_text = "Places a balloon at the mouse 
+location. This balloon extends
+ the shadows reach."
 focus_mode = 1
 texture_normal = ExtResource("5_dfq47")
 

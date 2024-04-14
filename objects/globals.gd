@@ -7,7 +7,11 @@ signal captured_walkable_signal
 signal selected_ability_changed
 signal icons_setup
 
-signal used_balloon
+signal used_balloon_ability
+signal used_shadow_ability
+
+signal retrack_shadows_signal
+signal play_win_sound_signal
 
 
 enum SelectableAbilities{

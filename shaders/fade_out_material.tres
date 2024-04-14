@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dm34c6mya7a5j"]
+
+[ext_resource type="Shader" path="res://shaders/wall_holder.gdshader" id="1_a1sg8"]
+
+[resource]
+shader = ExtResource("1_a1sg8")
+shader_parameter/transparency_percent = 1.0
