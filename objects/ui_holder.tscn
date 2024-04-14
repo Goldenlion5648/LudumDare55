@@ -76,10 +76,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -45.0
-offset_right = 30.0
-offset_bottom = -146.0
+offset_left = -122.0
+offset_top = -91.0
+offset_right = 28.0
+offset_bottom = -176.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -146,6 +146,7 @@ text = "[center]2[center]"
 script = ExtResource("8_e2ccc")
 
 [node name="light_icon" type="TextureButton" parent="hotbar_holder/hotbarHbox"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("6_66cn8")
 

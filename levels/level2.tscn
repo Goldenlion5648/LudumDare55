@@ -33,7 +33,7 @@ script = ExtResource("4_11o4a")
 position = Vector2(-17, -198)
 
 [node name="wall_holder" parent="." instance=ExtResource("6_lh6l7")]
-position = Vector2(-517, 196)
-scale = Vector2(0.520001, 1)
+position = Vector2(-496, 196)
+scale = Vector2(0.400001, 1)
 
 [node name="ui_holder" parent="." instance=ExtResource("7_y7sc3")]

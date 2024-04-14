@@ -22,7 +22,8 @@ func play_capture_sound(_extra):
 	$capture_sound.play()
 	
 func play_summon_balloon_sound(_extra):
-	$summon_balloon.play()	
+	$summon_balloon.play()
+	$summon_balloon2.play()
 
 func play_summon_shadow_sound():
 	$summon_shadow.play()

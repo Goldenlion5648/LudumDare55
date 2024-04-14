@@ -3,6 +3,7 @@ class_name ShadowController
 
 var captured_objects = []
 var walk_speed = 4
+var old_mouse_positions = []
 
 @export var player : CharacterBody2D
 @export var starting_shadow_power = 500
@@ -11,7 +12,7 @@ var walk_speed = 4
 
 var balloons_used = 0
 var lights_used = 0
-
+var farthest_shadow_stretched = 0
 
 const balloon_default_instance = preload("res://objects/balloon.tscn")
 
@@ -23,6 +24,8 @@ var _debug = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.CURRENT_SHADOW_CONTROLLER = self
+	Globals.total_win_button_count = 0
+	Globals.win_buttons_pressed = 0
 	setup_captured_objects()
 	current_shadow_power = starting_shadow_power
 	#Globals.captured_position_signal.connect(add_captured_point)
@@ -31,8 +34,16 @@ func _ready() -> void:
 	Globals.icons_setup.connect(hide_unavailable_icons)
 	Globals.selected_ability = Globals.SelectableAbilities.NormalShadow
 	Globals.selected_ability_changed.emit(Globals.SHADOW_ICON)
+# 	track_mouse_positions()
 
-	
+
+# func track_mouse_positions():
+# 	while true:
+# 		old_mouse_positions.append(get_global_mouse_position())
+# 		if len(old_mouse_positions) > 10:
+# 			old_mouse_positions.pop_front()
+# 		queue_redraw()
+# 		await get_tree().create_timer(0.02).timeout
 	#Globals.captured_walkable_signal.connect(add_captured_walkable)
 
 func get_total_shadow_worth_of_captured_points():
@@ -154,6 +165,7 @@ func _physics_process(delta: float) -> void:
 			break
 
 func _input(event: InputEvent) -> void:
+	pass
 	if event is InputEventMouse:
 		queue_redraw()
 
@@ -164,11 +176,23 @@ func get_shadow_positions():
 	var ret = get_objects_as_points()
 	if not should_show_shadow_to_mouse():
 		return ret
-	var distance_vector: Vector2 = get_global_mouse_position() - ret[-1]
+	var distance_vector: Vector2 
+	# var distance_vector: Vector2 = get_global_mouse_position() - ret[-1]
+	# if len(old_mouse_positions) > 0:
+	# 	distance_vector = old_mouse_positions[0] - ret[-1]
+	# 	#for i in range(3, len(old_mouse_positions)):
+	# 		#distance_vector = min(distance_vector, old_mouse_positions[i] - ret[-1])
+			
+	# else:
+	distance_vector = get_global_mouse_position() - ret[-1]
+
 	var total_len = get_total_shadow_length(ret)
 	#prints("total_len", total_len)
 	var remaining = max(0, get_allotted_shadow_power() - total_len)
+	# var current_limit = lerp(float(farthest_shadow_stretched), float(remaining), .1)
+	# farthest_shadow_stretched = current_limit
 	#prints("remaining", remaining)
+	
 	distance_vector = distance_vector.limit_length((remaining))
 	ret.append(ret[-1] + distance_vector)
 	return ret

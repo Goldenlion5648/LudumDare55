@@ -30,12 +30,15 @@ var SHADOW_ICON: TextureButton
 var BALLOON_ICON: TextureButton
 var LIGHT_ICON: TextureButton
 
+var total_win_button_count = 0
+var win_buttons_pressed = 0
+
 func start_win_sequence():
 	#TODO: play sound
 	load_next_level()
 
 func count_levels():
-	return 3
+	return 4
 	#var dir = DirAccess.open("res://levels/")
 	#var file_name = dir.get_next()
 	#var ret = 0
@@ -55,4 +58,7 @@ func load_next_level():
 	get_tree().change_scene_to_file.call_deferred("res://levels/level%d.tscn" % [current_level])
 	
 func reload_current_level():
-	get_tree().change_scene_to_file.call_deferred("res://levels/level%d.tscn" % [current_level])
+	if "level" not in get_tree().current_scene.name:
+		get_tree().change_scene_to_file.call_deferred("res://levels/level%d.tscn" % [current_level])
+	else:
+		get_tree().reload_current_scene()

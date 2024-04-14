@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddxtl6kpdjh2m"]
+[gd_scene load_steps=10 format=3 uid="uid://ddxtl6kpdjh2m"]
 
 [ext_resource type="Script" path="res://objects/sound_controller.gd" id="1_bgbxt"]
 [ext_resource type="AudioStream" uid="uid://dmukiwpe57c8l" path="res://sounds/capture_sound.wav" id="2_l4tsh"]
 [ext_resource type="AudioStream" uid="uid://cqx6ffloxoaws" path="res://sounds/summon_balloon2.wav" id="3_8vbgq"]
+[ext_resource type="AudioStream" uid="uid://cn5kpl2h77hvp" path="res://sounds/balloon2.wav" id="4_gqfb3"]
 [ext_resource type="AudioStream" uid="uid://sa28r5xxv8oa" path="res://sounds/summon_shadow.wav" id="4_rnvb8"]
 [ext_resource type="AudioStream" uid="uid://bv4b5txcqmr5d" path="res://sounds/retrack_shadow.wav" id="5_40pxl"]
 [ext_resource type="AudioStream" uid="uid://dkcxvwijgfx" path="res://sounds/win_sound.wav" id="6_md17t"]
@@ -19,6 +20,10 @@ stream = ExtResource("2_l4tsh")
 [node name="summon_balloon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_8vbgq")
 volume_db = 7.492
+
+[node name="summon_balloon2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gqfb3")
+volume_db = 1.317
 
 [node name="summon_shadow" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_rnvb8")

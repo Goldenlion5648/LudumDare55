@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://eic8oeayekod"]
+[gd_scene load_steps=8 format=3 uid="uid://eic8oeayekod"]
 
 [ext_resource type="Script" path="res://objects/shadow_controller.gd" id="1_l8i1t"]
 [ext_resource type="PackedScene" uid="uid://c47saxuqrc270" path="res://objects/win_button.tscn" id="2_cjqfl"]
@@ -7,48 +7,39 @@
 [ext_resource type="PackedScene" uid="uid://d4m15mq6e5jsn" path="res://objects/captureable_character.tscn" id="5_ut7oy"]
 [ext_resource type="PackedScene" uid="uid://ct20hjxw8kjjl" path="res://objects/wall_holder.tscn" id="6_lhw31"]
 [ext_resource type="PackedScene" uid="uid://cxtcvyjqensai" path="res://objects/ui_holder.tscn" id="7_pfqi4"]
-[ext_resource type="PackedScene" uid="uid://ddxtl6kpdjh2m" path="res://objects/sound_controller.tscn" id="8_qpgdr"]
 
-[node name="level0" type="Node2D"]
+[node name="level3" type="Node2D"]
 
 [node name="shadow_controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 script = ExtResource("1_l8i1t")
 player = NodePath("../player")
-starting_shadow_power = 200
+starting_shadow_power = 330
 
 [node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_cjqfl")]
-position = Vector2(58, -208)
+position = Vector2(194, -205)
+node_to_remove = NodePath("../wall_holder")
+
+[node name="win_button2" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_cjqfl")]
+position = Vector2(-54, -40)
 node_to_remove = NodePath("../wall_holder")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="player" parent="." instance=ExtResource("3_6cetf")]
 unique_name_in_owner = true
-position = Vector2(-360, 57)
+position = Vector2(-459, 180)
 platform_wall_layers = 1
 script = ExtResource("4_heqhv")
 
 [node name="captureableCharacter" parent="." instance=ExtResource("5_ut7oy")]
 position = Vector2(-360, -198)
 
+[node name="captureableCharacter2" parent="." instance=ExtResource("5_ut7oy")]
+position = Vector2(-359, -35)
+
 [node name="wall_holder" parent="." instance=ExtResource("6_lhw31")]
-position = Vector2(-356, 1.52588e-05)
+position = Vector2(-455, 123)
+scale = Vector2(0.4, 1)
 
 [node name="ui_holder" parent="." instance=ExtResource("7_pfqi4")]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ui_holder"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 121.0
-offset_top = -177.0
-offset_right = 516.0
-offset_bottom = -100.0
-grow_vertical = 0
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "Move using [wave amp=30.0 freq=3.37 connected=1]A[/wave] and [wave amp=30.0 freq=3.1 connected=1]D[/wave]"
-
-[node name="sound_controller" parent="." instance=ExtResource("8_qpgdr")]
