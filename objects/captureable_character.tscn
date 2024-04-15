@@ -13,6 +13,7 @@ script = ExtResource("1_qfy3d")
 
 [node name="capturable" parent="." instance=ExtResource("3_eagmu")]
 scale = Vector2(0.625, 0.625)
+global_radius_in_world = 67.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_dq8dl")

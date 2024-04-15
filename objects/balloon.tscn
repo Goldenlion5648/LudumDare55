@@ -9,6 +9,7 @@
 scale = Vector2(0.265, 0.265)
 shadow_worth = 400
 walkable = false
+global_radius_in_world = 33.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-17, -57.65)

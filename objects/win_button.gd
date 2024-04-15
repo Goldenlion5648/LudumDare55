@@ -22,3 +22,9 @@ func _on_body_entered(body: Node2D) -> void:
 		Globals.start_win_sequence()
 
 #func fade_out_node():
+
+
+func _on_body_exited(body: Node2D) -> void:
+	has_been_pressed = false
+	Globals.win_buttons_pressed -= 1
+	self.modulate = Color(1, 1, 1, 1)

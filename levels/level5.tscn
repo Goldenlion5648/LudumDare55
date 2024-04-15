@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7p5c2td5lbu6"]
+[gd_scene load_steps=9 format=3 uid="uid://c7p5c2td5lbu6"]
 
 [ext_resource type="Script" path="res://objects/shadow_controller.gd" id="1_w5y4d"]
 [ext_resource type="PackedScene" uid="uid://c47saxuqrc270" path="res://objects/win_button.tscn" id="2_ve2yw"]
@@ -7,39 +7,41 @@
 [ext_resource type="PackedScene" uid="uid://d4m15mq6e5jsn" path="res://objects/captureable_character.tscn" id="5_edrjs"]
 [ext_resource type="PackedScene" uid="uid://ct20hjxw8kjjl" path="res://objects/wall_holder.tscn" id="6_v2n1y"]
 [ext_resource type="PackedScene" uid="uid://cxtcvyjqensai" path="res://objects/ui_holder.tscn" id="7_jifem"]
+[ext_resource type="PackedScene" uid="uid://biro1vanip3qg" path="res://objects/captureable_characterInvert.tscn" id="8_ng52j"]
 
-[node name="level4" type="Node2D"]
+[node name="level5" type="Node2D"]
 
 [node name="shadow_controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 unique_name_in_owner = true
 script = ExtResource("1_w5y4d")
 player = NodePath("../player")
-starting_shadow_power = 330
+starting_shadow_power = 260
+balloons_allowed = 1
 
 [node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_ve2yw")]
-position = Vector2(194, -205)
+position = Vector2(-571, -159)
 node_to_remove = NodePath("../wall_holder")
 
 [node name="win_button2" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_ve2yw")]
-position = Vector2(-54, -40)
+position = Vector2(163, 113)
 node_to_remove = NodePath("../wall_holder")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="player" parent="." instance=ExtResource("3_svmso")]
 unique_name_in_owner = true
-position = Vector2(-459, 180)
+position = Vector2(-11, -96)
 platform_wall_layers = 1
 script = ExtResource("4_q20nh")
 
-[node name="captureableCharacter" parent="." instance=ExtResource("5_edrjs")]
-position = Vector2(-360, -198)
+[node name="captureableCharacterInvert" parent="." instance=ExtResource("8_ng52j")]
+position = Vector2(-393, -158)
 
-[node name="captureableCharacter2" parent="." instance=ExtResource("5_edrjs")]
-position = Vector2(-359, -35)
+[node name="captureableCharacter" parent="." instance=ExtResource("5_edrjs")]
+position = Vector2(-31, 96)
 
 [node name="wall_holder" parent="." instance=ExtResource("6_v2n1y")]
-position = Vector2(-455, 123)
+position = Vector2(-7, -153)
 scale = Vector2(0.4, 1)
 
 [node name="ui_holder" parent="." instance=ExtResource("7_jifem")]

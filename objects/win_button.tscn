@@ -24,7 +24,7 @@ text = "[center][wave amp=50.0 freq=3.0 connected=1]Release[/wave][/center]"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.58731, -7.14285)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_gxhoa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

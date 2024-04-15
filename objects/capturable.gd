@@ -3,7 +3,12 @@ class_name CapturableComponent
 
 @export var shadow_worth = 100
 @export var walkable = true
+@export var inverted = false
 @export var collisionShape: CollisionShape2D
+
+# HACK to get radius in global size 
+@export var global_radius_in_world = 0.0
+
 var is_captured = false:
 	set(val):
 		is_captured = val
@@ -19,7 +24,13 @@ func _on_mouse_entered() -> void:
 func is_in_range():
 	var temp_shadow_controller = (Globals.CURRENT_SHADOW_CONTROLLER)
 	var dist = (temp_shadow_controller.get_objects_as_points()[-1]).distance_to((self as Node2D).global_position)
-	return dist - collisionShape.shape.radius < temp_shadow_controller.calculate_remaining_shadow_power_without_mouse()
+	var ret = dist - global_radius_in_world < temp_shadow_controller.calculate_remaining_shadow_power_without_mouse()
+	print("got captured from in range function")
+	if ret:
+		print("dist", dist)
+		print("collisionShape.shape.radius", collisionShape.shape.radius)
+		print("long", temp_shadow_controller.calculate_remaining_shadow_power_without_mouse())
+	return ret
 		
 func try_capture():
 	var temp_shadow_controller = (Globals.CURRENT_SHADOW_CONTROLLER)

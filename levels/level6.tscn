@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://jlguywwshm7x"]
+
+[ext_resource type="Script" path="res://objects/shadow_controller.gd" id="1_j6epo"]
+[ext_resource type="PackedScene" uid="uid://c47saxuqrc270" path="res://objects/win_button.tscn" id="2_20m0s"]
+[ext_resource type="PackedScene" uid="uid://jgfu8alemrxr" path="res://objects/player.tscn" id="3_dwesx"]
+[ext_resource type="Script" path="res://objects/player.gd" id="4_qmq3e"]
+[ext_resource type="PackedScene" uid="uid://biro1vanip3qg" path="res://objects/captureable_characterInvert.tscn" id="5_sli0a"]
+[ext_resource type="PackedScene" uid="uid://d4m15mq6e5jsn" path="res://objects/captureable_character.tscn" id="6_nj1rg"]
+[ext_resource type="PackedScene" uid="uid://ct20hjxw8kjjl" path="res://objects/wall_holder.tscn" id="7_lcqgk"]
+[ext_resource type="PackedScene" uid="uid://cxtcvyjqensai" path="res://objects/ui_holder.tscn" id="8_8xosv"]
+
+[node name="level5" type="Node2D"]
+
+[node name="shadow_controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+script = ExtResource("1_j6epo")
+player = NodePath("../player")
+starting_shadow_power = 260
+balloons_allowed = 1
+
+[node name="win_button" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_20m0s")]
+position = Vector2(-473, -197)
+node_to_remove = NodePath("../wall_holder")
+
+[node name="win_button2" parent="." node_paths=PackedStringArray("node_to_remove") instance=ExtResource("2_20m0s")]
+position = Vector2(163, 113)
+node_to_remove = NodePath("../wall_holder")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("3_dwesx")]
+unique_name_in_owner = true
+position = Vector2(211, -96)
+platform_wall_layers = 1
+script = ExtResource("4_qmq3e")
+
+[node name="captureableCharacterInvert" parent="." instance=ExtResource("5_sli0a")]
+position = Vector2(-317, -206)
+
+[node name="captureableCharacter" parent="." instance=ExtResource("6_nj1rg")]
+position = Vector2(-31, 96)
+
+[node name="captureableCharacter2" parent="." instance=ExtResource("6_nj1rg")]
+position = Vector2(-288, 92)
+
+[node name="captureableCharacter3" parent="." instance=ExtResource("6_nj1rg")]
+position = Vector2(-436, -52)
+
+[node name="wall_holder" parent="." instance=ExtResource("7_lcqgk")]
+position = Vector2(215, -153)
+scale = Vector2(0.4, 1)
+
+[node name="ui_holder" parent="." instance=ExtResource("8_8xosv")]

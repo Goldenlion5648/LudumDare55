@@ -55,6 +55,7 @@ func get_total_shadow_worth_of_captured_points():
 	return ret
 
 func get_allotted_shadow_power():
+	# prints("starting_shadow_power", starting_shadow_power)
 	return starting_shadow_power + get_total_shadow_worth_of_captured_points()
 	
 func hide_unavailable_icons():
@@ -122,7 +123,7 @@ func _process(delta: float) -> void:
 		Globals.selected_ability = Globals.SelectableAbilities.NormalShadow
 		Globals.selected_ability_changed.emit(Globals.SHADOW_ICON)
 	if Input.is_action_just_pressed("select_balloon") and balloons_allowed > 0:
-		
+		has_active_shadow = false
 		Globals.selected_ability = Globals.SelectableAbilities.PlaceBalloon
 		Globals.selected_ability_changed.emit(Globals.BALLOON_ICON)
 	if Input.is_action_just_pressed("select_light") and lights_allowed > 0:
@@ -141,7 +142,6 @@ func calculate_remaining_shadow_power_without_mouse():
 func get_shadow_power_to_display():
 	return max(0, ceili(calculate_remaining_shadow_power() / 10.0))
 
-	
 
 func _physics_process(delta: float) -> void:
 	var change = Vector2(0,0)
@@ -162,7 +162,8 @@ func _physics_process(delta: float) -> void:
 		var current_capture_child = (object as Node2D).get_node("capturable") as CapturableComponent
 		if current_capture_child != null:
 			if current_capture_child.walkable:
-				(object as Node2D).global_position += change
+				var change_dir = -1 if current_capture_child.inverted else 1
+				(object as Node2D).global_position += change * change_dir
 				object.move_and_slide()
 		if player.is_on_wall():
 			break

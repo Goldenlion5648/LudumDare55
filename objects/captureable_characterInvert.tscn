@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://biro1vanip3qg"]
+
+[ext_resource type="Script" path="res://objects/captureable_character.gd" id="1_hmwq4"]
+[ext_resource type="PackedScene" uid="uid://14vhou66c4ng" path="res://objects/capturable.tscn" id="2_rewww"]
+[ext_resource type="Texture2D" uid="uid://4t4osc7vt8u8" path="res://textures/ninja_evil_upsidedown.png" id="3_r0o88"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggtta"]
+radius = 88.0
+
+[node name="captureableCharacterInvert" type="CharacterBody2D"]
+scale = Vector2(0.84, 0.84)
+script = ExtResource("1_hmwq4")
+
+[node name="capturable" parent="." instance=ExtResource("2_rewww")]
+scale = Vector2(0.625, 0.625)
+shadow_worth = 800
+inverted = true
+global_radius_in_world = 67.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("3_r0o88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ggtta")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="capturable" to="capturable" method="_on_mouse_exited"]
