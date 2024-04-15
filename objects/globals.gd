@@ -14,6 +14,7 @@ signal retrack_shadows_signal
 signal play_win_sound_signal
 
 signal button_pressed_signal
+signal out_of_item_signal
 
 
 enum SelectableAbilities{
@@ -40,7 +41,7 @@ func start_win_sequence():
 	load_next_level()
 
 func count_levels():
-	return 7
+	return 8
 	#var dir = DirAccess.open("res://levels/")
 	#var file_name = dir.get_next()
 	#var ret = 0

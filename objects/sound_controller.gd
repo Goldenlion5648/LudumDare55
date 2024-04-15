@@ -10,11 +10,15 @@ func _ready() -> void:
 	Globals.play_win_sound_signal.connect(play_win_sound)
 	Globals.selected_ability_changed.connect(play_select_ability_sound)
 	Globals.button_pressed_signal.connect(play_button_click_sound)
+	Globals.out_of_item_signal.connect(play_fail_sound)
 	background_music.finished.connect(play_background_music)
 	play_background_music()
 	
 func play_background_music():
-	background_music.play()
+	background_music.play()	
+
+func play_fail_sound():
+	$fail.play()
 	
 func play_select_ability_sound(_extra):
 	$select_ability.play()

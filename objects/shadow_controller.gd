@@ -92,6 +92,7 @@ func allowed_to_capture():
 
 func place_balloon():
 	if balloons_used >= balloons_allowed:
+		Globals.out_of_item_signal.emit()
 		return
 	balloons_used += 1
 	Globals.used_balloon_ability.emit(balloons_allowed - balloons_used)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddxtl6kpdjh2m"]
+[gd_scene load_steps=13 format=3 uid="uid://ddxtl6kpdjh2m"]
 
 [ext_resource type="Script" path="res://objects/sound_controller.gd" id="1_bgbxt"]
 [ext_resource type="AudioStream" uid="uid://dmukiwpe57c8l" path="res://sounds/capture_sound.wav" id="2_l4tsh"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dun0eodk1guol" path="res://sounds/background.wav" id="7_ux8g0"]
 [ext_resource type="AudioStream" uid="uid://bcad1teqw6660" path="res://sounds/select_ability.wav" id="8_bj2fl"]
 [ext_resource type="AudioStream" uid="uid://tq7vm7r6h5v" path="res://sounds/button_click.wav" id="11_1wcgl"]
+[ext_resource type="AudioStream" uid="uid://dvo0qrilk4ks" path="res://sounds/fail.wav" id="12_yjm4f"]
 
 [node name="sound_controller" type="Node2D" node_paths=PackedStringArray("background_music")]
 script = ExtResource("1_bgbxt")
@@ -52,4 +53,8 @@ volume_db = -0.567
 
 [node name="press_button" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_1wcgl")
+volume_db = 3.181
+
+[node name="fail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_yjm4f")
 volume_db = 3.181
